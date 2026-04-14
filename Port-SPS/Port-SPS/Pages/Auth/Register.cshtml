@@ -1,0 +1,71 @@
+@page
+@using Port_SPS.Pages.Auth
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registrace";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>@ViewData["Title"]</h1>
+            <hr />
+
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.FirstName" class="form-label"></label>
+                    <input asp-for="Input.FirstName" class="form-control" placeholder="Vaše jméno" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.LastName" class="form-label"></label>
+                    <input asp-for="Input.LastName" class="form-control" placeholder="Vaše příjmení" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.Email" class="form-label"></label>
+                    <input asp-for="Input.Email" class="form-control" placeholder="vas.email@spstrutnov.cz" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <small class="form-text text-muted">Musíte použít školní email s doménou @@spstrutnov.cz</small>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.UserRole" class="form-label"></label>
+                    <select asp-for="Input.UserRole" class="form-select">
+                        <option value="">-- Vyberte roli --</option>
+                        <option value="Student">Student/Studentka</option>
+                        <option value="Teacher">Učitel/Učitelka</option>
+                    </select>
+                    <span asp-validation-for="Input.UserRole" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.Password" class="form-label"></label>
+                    <input asp-for="Input.Password" class="form-control" placeholder="Alespoň 8 znaků" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.ConfirmPassword" class="form-label"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Znovu zadejte heslo" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Registrovat se</button>
+            </form>
+
+            <hr />
+            <p>
+                Již máte účet? <a asp-page="./Login">Přihlaste se</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

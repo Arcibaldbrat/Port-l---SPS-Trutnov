@@ -1,0 +1,84 @@
+@page
+@using Port_SPS.Pages
+@model IndexModel
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Domů";
+}
+
+<div class="container-fluid py-5">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h1 class="display-4">Vítejte na Portálu SPS Trutnov</h1>
+            <p class="lead">Střední průmyslová škola Trutnov</p>
+        </div>
+    </div>
+
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <strong>Vítejte, @Model.CurrentUser?.FirstName @Model.CurrentUser?.LastName!</strong>
+                    <br/>
+                    Vaše role: <strong>@Model.CurrentUser?.Role</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Můj profil</h5>
+                        <p class="card-text">Spravujte své údaje a nastavení</p>
+                        <a asp-page="/Profile/Index" class="btn btn-primary">Přejít na profil</a>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.CurrentUser?.Role == "Student")
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Mé známky</h5>
+                            <p class="card-text">Zobrazit vaše školní výsledky</p>
+                            <a asp-page="/Student/Grades" class="btn btn-primary">Zobrazit</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (Model.CurrentUser?.Role == "Teacher")
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Mé třídy</h5>
+                            <p class="card-text">Spravujte své třídy a studenty</p>
+                            <a asp-page="/Teacher/Classes" class="btn btn-primary">Zobrazit</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="jumbotron">
+                    <h2>Přihlaste se nebo se zaregistrujte</h2>
+                    <p>Přihlášení je vyžadováno pro studenty a učitele. Veřejná sekce je dostupná bez přihlášení.</p>
+                    <hr class="my-4">
+                    <a asp-page="/Auth/Login" class="btn btn-primary btn-lg me-2">Přihlásit se</a>
+                    <a asp-page="/Auth/Register" class="btn btn-success btn-lg">Zaregistrovat se</a>
+                </div>
+
+                <h3 class="mt-5">Veřejné informace o škole</h3>
+                <p>Zde mohou být různé veřejné informace o škole, rozvrh, aktuality atd.</p>
+            </div>
+        </div>
+    }
+</div>
