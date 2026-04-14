@@ -23,8 +23,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
-.AddDefaultTokenProviders()
-.AddDefaultUI();
+.AddDefaultTokenProviders();
 
 // Add Email Validator
 builder.Services.AddScoped<IEmailValidator, SchoolEmailValidator>();

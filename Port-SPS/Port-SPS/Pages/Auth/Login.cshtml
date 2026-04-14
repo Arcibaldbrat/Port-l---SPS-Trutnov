@@ -6,47 +6,143 @@
     ViewData["Title"] = "Přihlášení";
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1>@ViewData["Title"]</h1>
-            <h4>Portál SPS Trutnov</h4>
-            <hr />
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-            <div class="row">
-                <div class="col-md-12">
-                    <form method="post">
-                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+    .login-container h1 {
+        margin-bottom: 10px;
+        text-align: center;
+    }
 
-                        <div class="mb-3">
-                            <label asp-for="Input.Email" class="form-label"></label>
-                            <input asp-for="Input.Email" class="form-control" autofocus />
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
+    .login-container h4 {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #666;
+    }
 
-                        <div class="mb-3">
-                            <label asp-for="Input.Password" class="form-label"></label>
-                            <input asp-for="Input.Password" class="form-control" />
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
+    .form-group {
+        margin-bottom: 15px;
+    }
 
-                        <div class="mb-3 form-check">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
-                            <label class="form-check-label" asp-for="Input.RememberMe">
-                                @Html.DisplayNameFor(m => m.Input.RememberMe)
-                            </label>
-                        </div>
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
 
-                        <button id="login-submit" type="submit" class="btn btn-primary w-100">Přihlásit se</button>
-                    </form>
-                </div>
-            </div>
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
 
-            <hr />
-            <p>
-                Nemáte účet? <a asp-page="./Register">Zaregistrujte se zde</a>
-            </p>
+    .form-group input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .checkbox-label {
+        display: inline;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .submit-btn:hover {
+        background-color: #1e40af;
+    }
+
+    .error-message {
+        color: #dc2626;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .register-link {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+    }
+
+    .register-link a {
+        color: #2563eb;
+        text-decoration: none;
+    }
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="login-container">
+    <h1>@ViewData["Title"]</h1>
+    <h4>Portál SPS Trutnov</h4>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="error-message" style="margin-bottom: 15px;">
+            <strong>Chyba:</strong> @Model.ErrorMessage
         </div>
+    }
+
+    <form method="post" action="/Auth/Login">
+        @if (!ModelState.IsValid)
+        {
+            <div class="error-message" style="margin-bottom: 15px;">
+                @Html.ValidationSummary()
+            </div>
+        }
+
+        <div class="form-group">
+            <label asp-for="Input.Email">Email:</label>
+            <input asp-for="Input.Email" type="email" placeholder="vas@email.com" />
+            @if (ModelState["Input.Email"]?.Errors.Count > 0)
+            {
+                <span class="error-message">@ModelState["Input.Email"]?.Errors[0].ErrorMessage</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Input.Password">Heslo:</label>
+            <input asp-for="Input.Password" type="password" placeholder="Zadejte heslo" />
+            @if (ModelState["Input.Password"]?.Errors.Count > 0)
+            {
+                <span class="error-message">@ModelState["Input.Password"]?.Errors[0].ErrorMessage</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Input.RememberMe" type="checkbox" />
+            <label asp-for="Input.RememberMe" class="checkbox-label">Pamatuj si mě</label>
+        </div>
+
+        <button type="submit" class="submit-btn">Přihlásit se</button>
+    </form>
+
+    <div class="register-link">
+        <p>Nemáte účet? <a asp-page="./Register">Zaregistrujte se zde</a></p>
     </div>
 </div>
 
