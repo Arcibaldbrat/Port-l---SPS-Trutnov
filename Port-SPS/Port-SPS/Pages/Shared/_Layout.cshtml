@@ -9,67 +9,62 @@
     <link rel="stylesheet" href="~/Port_SPS.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-page="/Index">SPS Trutnov</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Index">Domů</a>
-                    </li>
-                    @if (User.Identity?.IsAuthenticated ?? false)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Profile/Index">Můj profil</a>
-                        </li>
-                    }
-                </ul>
-                <ul class="navbar-nav">
-                    @if (User.Identity?.IsAuthenticated ?? false)
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                @User.Identity.Name
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-page="/Profile/Index">Profil</a></li>
-                                <li><a class="dropdown-item" asp-page="/Profile/ChangePassword">Změna hesla</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <form method="post" asp-page="/Auth/Logout">
-                                        <button type="submit" class="dropdown-item">Odhlásit se</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Auth/Login">Přihlášení</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Auth/Register">Registrace</a>
-                        </li>
-                    }
-                </ul>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <span class="user-greeting">Dobrý den, @User.Identity.Name!</span>
+                    <form method="post" asp-page="/Auth/Logout">
+                        <button type="submit" class="logout-btn">Odhlásit se</button>
+                    </form>
+                }
+                else
+                {
+                    <a href="/Auth/Login" style="color: white; text-decoration: none;">Přihlášení</a>
+                }
             </div>
         </div>
-    </nav>
+    </header>
+
+    <!-- Navigation -->
+    @if (User.Identity?.IsAuthenticated ?? false)
+    {
+        <nav class="nav-menu">
+            <div class="nav-container">
+                <a asp-page="/Dashboard" class="nav-link">📊 Přehled</a>
+                <a asp-page="/Schedule" class="nav-link">🗓️ Rozvrh</a>
+                <a asp-page="/Grades" class="nav-link">📈 Známky</a>
+                <a asp-page="/Messages" class="nav-link">💬 Zprávy</a>
+                <a asp-page="/Classes" class="nav-link">👥 Třídy</a>
+                <a asp-page="/Announcements" class="nav-link">📢 Oznámení</a>
+                <a asp-page="/Teachers" class="nav-link">👨‍🏫 Učitelé</a>
+                <a asp-page="/Materials" class="nav-link">📚 Materiály</a>
+                <a asp-page="/Profile/Index" class="nav-link">👤 Profil</a>
+            </div>
+        </nav>
+    }
 
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Střední průmyslová škola Trutnov | <a href="https://www.spstrutnov.cz">www.spstrutnov.cz</a>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
         </div>
     </footer>
 

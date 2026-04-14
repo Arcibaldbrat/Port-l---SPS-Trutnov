@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace Port_SPS.Pages
 {
     [Authorize]
-    public class ClassesModel : PageModel
+    public class MaterialsModel : PageModel
     {
         public void OnGet()
         {

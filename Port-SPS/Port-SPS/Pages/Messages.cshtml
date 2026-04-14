@@ -1,0 +1,60 @@
+@page
+@using Port_SPS.Pages
+@model MessagesModel
+@{
+    ViewData["Title"] = "Zprávy";
+}
+
+<h2>💬 Zprávy</h2>
+<div class="messages-container">
+    <div class="messages-sidebar">
+        <h3>Konverzace</h3>
+        <ul class="conversations-list">
+            <li class="conversation active">
+                <span class="conv-avatar">📌</span>
+                <span class="conv-name">Učitel</span>
+                <span class="unread-badge">1</span>
+            </li>
+            <li class="conversation">
+                <span class="conv-avatar">👨‍🏫</span>
+                <span class="conv-name">Třídní učitel</span>
+                <span class="unread-badge">2</span>
+            </li>
+            <li class="conversation">
+                <span class="conv-avatar">💻</span>
+                <span class="conv-name">Administrace</span>
+            </li>
+            <li class="conversation">
+                <span class="conv-avatar">👩‍💼</span>
+                <span class="conv-name">Vedení školy</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="messages-content">
+        <div class="message-header">
+            <h3>Konverzace</h3>
+            <button class="btn-small">Smaž rozhovor</button>
+        </div>
+
+        <div class="messages-list">
+            <div class="message received">
+                <p>Příklad zprávy od učitele</p>
+                <span class="message-time">10:30</span>
+            </div>
+            <div class="message sent">
+                <p>Příklad vaší odpovědi</p>
+                <span class="message-time">10:35</span>
+            </div>
+            <div class="message received">
+                <p>Další zpráva z komunikace</p>
+                <span class="message-time">10:36</span>
+            </div>
+        </div>
+
+        <div class="message-input-area">
+            <textarea placeholder="Napište vaši zprávu..."></textarea>
+            <button class="btn-primary">Poslat</button>
+        </div>
+    </div>
+</div>

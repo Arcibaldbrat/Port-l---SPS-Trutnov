@@ -1,0 +1,68 @@
+@page
+@using Port_SPS.Pages
+@model ScheduleModel
+@{
+    ViewData["Title"] = "Rozvrh";
+}
+
+<h2>🗓️ Rozvrh hodin</h2>
+<div class="timetable">
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>Čas</th>
+                <th>Pondělí</th>
+                <th>Úterý</th>
+                <th>Středa</th>
+                <th>Čtvrtek</th>
+                <th>Pátek</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="time">08:00-08:45</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+            </tr>
+            <tr>
+                <td class="time">08:55-09:40</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+            </tr>
+            <tr>
+                <td class="time">09:50-10:35</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+            </tr>
+            <tr>
+                <td class="time">10:45-11:30</td>
+                <td colspan="5" class="info-cell">☕ PŘESTÁVKA 10 MINUT ☕</td>
+            </tr>
+            <tr>
+                <td class="time">11:30-12:15</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+            </tr>
+            <tr>
+                <td class="time">12:25-13:10</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+                <td>Předmět</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

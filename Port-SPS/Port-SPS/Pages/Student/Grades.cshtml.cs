@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Port_SPS.Pages.Student
+namespace Port_SPS.Pages
 {
-    [Authorize(Roles = "Student")]
+    [Authorize]
     public class GradesModel : PageModel
     {
         public void OnGet()

@@ -1,15 +1,41 @@
 @page
-@using Port_SPS.Pages.Teacher
+@using Port_SPS.Pages
 @model ClassesModel
 @{
-    ViewData["Title"] = "Mé třídy";
+    ViewData["Title"] = "Třídy";
 }
 
-<div class="container mt-5">
-    <h1>@ViewData["Title"]</h1>
-    <hr />
-    
-    <div class="alert alert-info">
-        Tato stránka je zatím v přípravě. Zde budete spravovat své třídy a studenty.
+<h2>👥 Třídy a skupiny</h2>
+<div class="classes-grid">
+    <div class="class-card">
+        <h3>Hlavní třída</h3>
+        <p class="class-info"><strong>Třídní učitel:</strong> [Jméno bude doplněno]</p>
+        <p class="class-info"><strong>Počet žáků:</strong> 25-30</p>
+        <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+        <button class="btn-secondary">Zobrazit členy</button>
+    </div>
+
+    <div class="class-card">
+        <h3>Předmět (skupina)</h3>
+        <p class="class-info"><strong>Vyučující:</strong> [Jméno bude doplněno]</p>
+        <p class="class-info"><strong>Počet žáků:</strong> 10-20</p>
+        <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+        <button class="btn-secondary">Zobrazit členy</button>
+    </div>
+
+    <div class="class-card">
+        <h3>Předmět (skupina)</h3>
+        <p class="class-info"><strong>Vyučující:</strong> [Jméno bude doplněno]</p>
+        <p class="class-info"><strong>Počet žáků:</strong> 15-25</p>
+        <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+        <button class="btn-secondary">Zobrazit členy</button>
+    </div>
+
+    <div class="class-card">
+        <h3>Předmět (skupina)</h3>
+        <p class="class-info"><strong>Vyučující:</strong> [Jméno bude doplněno]</p>
+        <p class="class-info"><strong>Počet žáků:</strong> 20-30</p>
+        <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+        <button class="btn-secondary">Zobrazit členy</button>
     </div>
 </div>
