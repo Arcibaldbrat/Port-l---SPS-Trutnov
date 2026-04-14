@@ -2,150 +2,29 @@
 @using Port_SPS.Pages.Auth
 @model LoginModel
 
-@{
-    ViewData["Title"] = "Přihlášení";
-}
+<h2>Přihlášení</h2>
 
-<style>
-    .login-container {
-        max-width: 400px;
-        margin: 50px auto;
-        padding: 30px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-container h1 {
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .login-container h4 {
-        margin-bottom: 20px;
-        text-align: center;
-        color: #666;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 500;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="password"],
-    .form-group input[type="email"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
-
-    .form-group input[type="checkbox"] {
-        margin-right: 5px;
-    }
-
-    .checkbox-label {
-        display: inline;
-    }
-
-    .submit-btn {
-        width: 100%;
-        padding: 10px;
-        background-color: #2563eb;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .submit-btn:hover {
-        background-color: #1e40af;
-    }
-
-    .error-message {
-        color: #dc2626;
-        font-size: 14px;
-        margin-top: 5px;
-    }
-
-    .register-link {
-        text-align: center;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #ddd;
-    }
-
-    .register-link a {
-        color: #2563eb;
-        text-decoration: none;
-    }
-
-    .register-link a:hover {
-        text-decoration: underline;
-    }
-</style>
-
-<div class="login-container">
-    <h1>@ViewData["Title"]</h1>
-    <h4>Portál SPS Trutnov</h4>
-
-    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-    {
-        <div class="error-message" style="margin-bottom: 15px;">
-            <strong>Chyba:</strong> @Model.ErrorMessage
-        </div>
-    }
-
-    <form method="post" action="/Auth/Login">
-        @if (!ModelState.IsValid)
-        {
-            <div class="error-message" style="margin-bottom: 15px;">
-                @Html.ValidationSummary()
-            </div>
-        }
-
-        <div class="form-group">
-            <label asp-for="Input.Email">Email:</label>
-            <input asp-for="Input.Email" type="email" placeholder="vas@email.com" />
-            @if (ModelState["Input.Email"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.Email"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Input.Password">Heslo:</label>
-            <input asp-for="Input.Password" type="password" placeholder="Zadejte heslo" />
-            @if (ModelState["Input.Password"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.Password"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <input asp-for="Input.RememberMe" type="checkbox" />
-            <label asp-for="Input.RememberMe" class="checkbox-label">Pamatuj si mě</label>
-        </div>
-
-        <button type="submit" class="submit-btn">Přihlásit se</button>
-    </form>
-
-    <div class="register-link">
-        <p>Nemáte účet? <a asp-page="./Register">Zaregistrujte se zde</a></p>
+<form method="post">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Input.Email" required />
     </div>
-</div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    <div>
+        <label for="password">Heslo:</label>
+        <input type="password" id="password" name="Input.Password" required />
+    </div>
+
+    <div>
+        <label for="rememberMe">
+            <input type="checkbox" id="rememberMe" name="Input.RememberMe" />
+            Pamatuj si mě
+        </label>
+    </div>
+
+    <button type="submit">Přihlásit se</button>
+</form>
+
+<p>
+    Nemáte účet? <a asp-page="./Register">Zaregistrujte se zde</a>
+</p>

@@ -2,172 +2,45 @@
 @using Port_SPS.Pages.Auth
 @model RegisterModel
 
-@{
-    ViewData["Title"] = "Registrace";
-}
+<h2>Registrace</h2>
 
-<style>
-    .register-container {
-        max-width: 500px;
-        margin: 50px auto;
-        padding: 30px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .register-container h1 {
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: 500;
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="password"],
-    .form-group input[type="email"],
-    .form-group select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
-
-    .form-group small {
-        display: block;
-        margin-top: 5px;
-        color: #666;
-        font-size: 12px;
-    }
-
-    .submit-btn {
-        width: 100%;
-        padding: 10px;
-        background-color: #2563eb;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .submit-btn:hover {
-        background-color: #1e40af;
-    }
-
-    .error-message {
-        color: #dc2626;
-        font-size: 14px;
-        margin-top: 5px;
-    }
-
-    .login-link {
-        text-align: center;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #ddd;
-    }
-
-    .login-link a {
-        color: #2563eb;
-        text-decoration: none;
-    }
-
-    .login-link a:hover {
-        text-decoration: underline;
-    }
-</style>
-
-<div class="register-container">
-    <h1>@ViewData["Title"]</h1>
-
-    @if (!ModelState.IsValid)
-    {
-        <div class="error-message" style="margin-bottom: 15px;">
-            @Html.ValidationSummary()
-        </div>
-    }
-
-    <form method="post" action="/Auth/Register">
-        <div class="form-group">
-            <label asp-for="Input.FirstName">Jméno:</label>
-            <input asp-for="Input.FirstName" type="text" placeholder="Vaše jméno" />
-            @if (ModelState["Input.FirstName"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.FirstName"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Input.LastName">Příjmení:</label>
-            <input asp-for="Input.LastName" type="text" placeholder="Vaše příjmení" />
-            @if (ModelState["Input.LastName"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.LastName"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Input.Email">Email:</label>
-            <input asp-for="Input.Email" type="email" placeholder="vas@spstrutnov.cz" />
-            <small>Musíte použít školní email s doménou @@spstrutnov.cz</small>
-            @if (ModelState["Input.Email"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.Email"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Input.UserRole">Vaše role:</label>
-            <select asp-for="Input.UserRole">
-                <option value="">-- Vyberte roli --</option>
-                <option value="Student">Student/Studentka</option>
-                <option value="Teacher">Učitel/Učitelka</option>
-            </select>
-            @if (ModelState["Input.UserRole"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.UserRole"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Input.Password">Heslo:</label>
-            <input asp-for="Input.Password" type="password" placeholder="Alespoň 8 znaků" />
-            @if (ModelState["Input.Password"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.Password"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Input.ConfirmPassword">Potvrzení hesla:</label>
-            <input asp-for="Input.ConfirmPassword" type="password" placeholder="Znovu zadejte heslo" />
-            @if (ModelState["Input.ConfirmPassword"]?.Errors.Count > 0)
-            {
-                <span class="error-message">@ModelState["Input.ConfirmPassword"]?.Errors[0].ErrorMessage</span>
-            }
-        </div>
-
-        <button type="submit" class="submit-btn">Registrovat se</button>
-    </form>
-
-    <div class="login-link">
-        <p>Již máte účet? <a asp-page="./Login">Přihlaste se zde</a></p>
+<form method="post">
+    <div>
+        <label for="firstName">Jméno:</label>
+        <input type="text" id="firstName" name="Input.FirstName" required />
     </div>
-</div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    <div>
+        <label for="lastName">Příjmení:</label>
+        <input type="text" id="lastName" name="Input.LastName" required />
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="Input.Email" required />
+        <small>Musíte použít školní email s doménou @@spstrutnov.cz</small>
+    </div>
+
+    <div>
+        <label for="userRole">Vaše role:</label>
+        <select id="userRole" name="Input.UserRole" required>
+            <option value="">-- Vyberte roli --</option>
+            <option value="Student">Student/Studentka</option>
+            <option value="Teacher">Učitel/Učitelka</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="password">Heslo:</label>
+        <input type="password" id="password" name="Input.Password" required />
+    </div>
+
+    <div>
+        <label for="confirmPassword">Potvrzení hesla:</label>
+        <input type="password" id="confirmPassword" name="Input.ConfirmPassword" required />
+    </div>
+
+    <button type="submit">Registrovat se</button>
+</form>
+
+<p>Již máte účet? <a asp-page="./Login">Přihlaste se zde</a></p>
