@@ -1,8 +1,676 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Školní portál - SPS Trutnov";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Školní portál - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()" id="logoutBtn" style="display: none;">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">Přehled</a>
+            <a href="#schedule" class="nav-link" onclick="showSection('schedule')">Rozvrh</a>
+            <a href="#grades" class="nav-link" onclick="showSection('grades')">Známky</a>
+            <a href="#messages" class="nav-link" onclick="showSection('messages')">Zprávy</a>
+            <a href="#classes" class="nav-link" onclick="showSection('classes')">Třídy</a>
+            <a href="#announcements" class="nav-link" onclick="showSection('announcements')">Oznámení</a>
+            <a href="#teachers" class="nav-link" onclick="showSection('teachers')">Učitelé</a>
+            <a href="#materials" class="nav-link" onclick="showSection('materials')">Materiály</a>
+            <a href="#profile" class="nav-link" onclick="showSection('profile')">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Login Prompt -->
+        <div id="loginPrompt" class="card" style="text-align: center; padding: 3rem;">
+            <h2>🔒 Přihlášení vyžadováno</h2>
+            <p style="color: #6b7280; font-size: 1.1rem; margin: 1rem 0;">Prosím, přihlaste se pro přístup k portálu</p>
+            <a href="login.html" class="btn-primary" style="display: inline-block; padding: 0.75rem 2rem; text-decoration: none; margin-top: 1rem; border-radius: 0.375rem; background-color: #2563eb; color: white; font-weight: 600;">Jít na přihlášení</a>
+        </div>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section" style="display: none;">
+            <h2>Přehled</h2>
+
+            <div class="dashboard-grid">
+                <!-- Quick Stats -->
+                <div class="card stats-card">
+                    <h3>Statistika</h3>
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <span class="stat-number">-</span>
+                            <span class="stat-label">Průměr známek</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">-</span>
+                            <span class="stat-label">Nečtené zprávy</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">-</span>
+                            <span class="stat-label">Domácí úkoly</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">-</span>
+                            <span class="stat-label">Docházka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="card">
+                    <h3>🗓️ Nadcházející akce</h3>
+                    <ul class="event-list">
+                        <li>
+                            <span class="event-date">XX.XX.</span>
+                            <span class="event-title">Plánovaná akce</span>
+                        </li>
+                        <li>
+                            <span class="event-date">XX.XX.</span>
+                            <span class="event-title">Plánovaná aktivita</span>
+                        </li>
+                        <li>
+                            <span class="event-date">XX.XX.</span>
+                            <span class="event-title">Plánovaná událost</span>
+                        </li>
+                        <li>
+                            <span class="event-date">XX.XX.</span>
+                            <span class="event-title">Plánovaná akce</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Latest Grades -->
+                <div class="card">
+                    <h3>📊 Poslední známky</h3>
+                    <p style="color: #9ca3af; text-align: center; padding: 2rem;">Přihlaste se pro zobrazení středek</p>
+                </div>
+
+                <!-- Messages Preview -->
+                <div class="card">
+                    <h3>💬 Poslední zprávy</h3>
+                    <ul class="message-list">
+                        <li>
+                            <strong>Sistem:</strong> Přihlaste se pro zobrazení zpráv
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Homework -->
+                <div class="card">
+                    <h3>✏️ Domácí úkoly</h3>
+                    <p style="color: #9ca3af; text-align: center; padding: 1rem;">Přihlaste se pro zobrazení domácích úkolů</p>
+                </div>
+
+                <!-- Attendance -->
+                <div class="card">
+                    <h3>📋 Docházka</h3>
+                    <p style="color: #9ca3af; text-align: center; padding: 1rem;">Přihlaste se pro zobrazení docházky</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="section" style="display: none;">
+            <h2>Rozvrh hodin</h2>
+            <div class="timetable">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Čas</th>
+                            <th>Pondělí</th>
+                            <th>Úterý</th>
+                            <th>Středa</th>
+                            <th>Čtvrtek</th>
+                            <th>Pátek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time">08:00-08:45</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                        </tr>
+                        <tr>
+                            <td class="time">08:55-09:40</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                        </tr>
+                        <tr>
+                            <td class="time">09:50-10:35</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                        </tr>
+                        <tr>
+                            <td class="time">10:45-11:30</td>
+                            <td colspan="5" class="info-cell">☕ PŘESTÁVKA 10 MINUT ☕</td>
+                        </tr>
+                        <tr>
+                            <td class="time">11:30-12:15</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                        </tr>
+                        <tr>
+                            <td class="time">12:25-13:10</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                            <td>Předmět</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Grades Section -->
+        <section id="grades" class="section">
+            <h2>Moje známky</h2>
+            <p style="color: #9ca3af; padding: 2rem; text-align: center;">Přihlaste se pro zobrazení svých známek</p>
+            <div class="grades-grid" style="display: none;">
+                <div class="subject-card">
+                    <h3>Matematika</h3>
+                    <p class="subject-average">Průměr: <strong>8.2</strong></p>
+                    <ul class="grades-list">
+                        <li><span>Písemka - Kvadratické rovnice</span> <span class="grade-1">1</span></li>
+                        <li><span>Ústní odpověď</span> <span class="grade-1">1</span></li>
+                        <li><span>Domácí úkol - průměr</span> <span class="grade-2">2</span></li>
+                        <li><span>Test - Funkce</span> <span class="grade-1">1</span></li>
+                    </ul>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Čeština</h3>
+                    <p class="subject-average">Průměr: <strong>8.7</strong></p>
+                    <ul class="grades-list">
+                        <li><span>Esej - Klasická literatura</span> <span class="grade-1">1</span></li>
+                        <li><span>Diktat</span> <span class="grade-2">2</span></li>
+                        <li><span>Čtenářský deník</span> <span class="grade-1">1</span></li>
+                        <li><span>Ústní odpověď</span> <span class="grade-2">2</span></li>
+                    </ul>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Anglický jazyk</h3>
+                    <p class="subject-average">Průměr: <strong>9.0</strong></p>
+                    <ul class="grades-list">
+                        <li><span>Written test</span> <span class="grade-1">1</span></li>
+                        <li><span>Listening comprehension</span> <span class="grade-1">1</span></li>
+                        <li><span>Speaking practice</span> <span class="grade-1">1</span></li>
+                        <li><span>Prezentace</span> <span class="grade-1">1</span></li>
+                    </ul>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Fyzika</h3>
+                    <p class="subject-average">Průměr: <strong>8.3</strong></p>
+                    <ul class="grades-list">
+                        <li><span>Praktické cvičení - optika</span> <span class="grade-1">1</span></li>
+                        <li><span>Test - Mechanika</span> <span class="grade-2">2</span></li>
+                        <li><span>Písemky - průměr</span> <span class="grade-2">2</span></li>
+                        <li><span>Projekt - fyzikální experiment</span> <span class="grade-1">1</span></li>
+                    </ul>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Informatika</h3>
+                    <p class="subject-average">Průměr: <strong>9.2</strong></p>
+                    <ul class="grades-list">
+                        <li><span>Programování - HTML/CSS projekt</span> <span class="grade-1">1</span></li>
+                        <li><span>Algoritmy - test</span> <span class="grade-1">1</span></li>
+                        <li><span>Databáze - praktická práce</span> <span class="grade-1">1</span></li>
+                        <li><span>Bezpečnost IT - esej</span> <span class="grade-1">1</span></li>
+                    </ul>
+                </div>
+
+                <div class="subject-card">
+                    <h3>Tělesná výchova</h3>
+                    <p class="subject-average">Průměr: <strong>9.0</strong></p>
+                    <ul class="grades-list">
+                        <li><span>Atletika</span> <span class="grade-1">1</span></li>
+                        <li><span>Basket</span> <span class="grade-1">1</span></li>
+                        <li><span>Gymnastika</span> <span class="grade-1">1</span></li>
+                        <li><span>Součinnost v týmu</span> <span class="grade-1">1</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section id="messages" class="section" style="display: none;">
+            <h2>Zprávy</h2>
+            <p style="color: #9ca3af; padding: 2rem; text-align: center;">Přihlaste se pro zobrazení svých zpráv</p>
+            <div class="messages-container" style="display: none;">
+                <div class="messages-sidebar">
+                    <h3>Konverzace</h3>
+                    <ul class="conversations-list">
+                        <li class="conversation active">
+                            <span class="conv-avatar">📌</span>
+                            <span class="conv-name">Učitel</span>
+                            <span class="unread-badge">1</span>
+                        </li>
+                        <li class="conversation">
+                            <span class="conv-avatar">👨‍🏫</span>
+                            <span class="conv-name">Třídní učitel</span>
+                            <span class="unread-badge">2</span>
+                        </li>
+                        <li class="conversation">
+                            <span class="conv-avatar">💻</span>
+                            <span class="conv-name">Administrace</span>
+                        </li>
+                        <li class="conversation">
+                            <span class="conv-avatar">👩‍💼</span>
+                            <span class="conv-name">Vedení školy</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="messages-content">
+                    <div class="message-header">
+                        <h3>Konverzace</h3>
+                        <button class="btn-small">Smaž rozhovor</button>
+                    </div>
+
+                    <div class="messages-list">
+                        <div class="message received">
+                            <p>Příklad zprávy od učitele</p>
+                            <span class="message-time">10:30</span>
+                        </div>
+                        <div class="message sent">
+                            <p>Příklad vaší odpovědi</p>
+                            <span class="message-time">10:35</span>
+                        </div>
+                        <div class="message received">
+                            <p>Další zpráva z komunikace</p>
+                            <span class="message-time">10:36</span>
+                        </div>
+                    </div>
+
+                    <div class="message-input-area">
+                        <textarea placeholder="Napište vaši zprávu..."></textarea>
+                        <button class="btn-primary">Poslat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classes Section -->
+        <section id="classes" class="section" style="display: none;">
+            <h2>Třídy a skupiny</h2>
+            <div class="classes-grid">
+                <div class="class-card">
+                    <h3>Hlavní třída</h3>
+                    <p class="class-info"><strong>Třídní učitel:</strong> [Jméno bude doplněno]</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 25-30</p>
+                    <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Předmět (skupina)</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> [Jméno bude doplněno]</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 10-20</p>
+                    <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Předmět (skupina)</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> [Jméno bude doplněno]</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 15-25</p>
+                    <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Předmět (skupina)</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> [Jméno bude doplněno]</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 20-30</p>
+                    <p class="class-info"><strong>Místnost:</strong> [Číslo třídy]</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Announcements Section -->
+        <section id="announcements" class="section" style="display: none;">
+            <h2>Oznámení a novinky</h2>
+            <div class="announcements-list">
+                <article class="announcement important">
+                    <div class="announcement-header">
+                        <h3>⚠️ Oznámení ze školy</h3>
+                        <span class="announcement-date">XX. XX. 2026</span>
+                    </div>
+                    <p>Obsah oznámení bude doplněn později.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>📢 Novinky</h3>
+                        <span class="announcement-date">XX. XX. 2026</span>
+                    </div>
+                    <p>Nové informace a aktuality budou zveřejněny v příslušné sekci.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>🔧 Technika a údržba</h3>
+                        <span class="announcement-date">XX. XX. 2026</span>
+                    </div>
+                    <p>Informace o údržbě a technických otázkách budou zveřejněny zde.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>🎉 Školní akce</h3>
+                        <span class="announcement-date">XX. XX. 2026</span>
+                    </div>
+                    <p>Nadcházející školní akce a podrobnosti budou v příslušné sekci.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>📚 Vzdělávací materiály</h3>
+                        <span class="announcement-date">XX. XX. 2026</span>
+                    </div>
+                    <p>Nové materiály a zdroje pro studium budou zpřístupněny postupně.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section id="teachers" class="section" style="display: none;">
+            <h2>Pedagogický sbor</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🏫</div>
+                    <h3>[Jméno učitele]</h3>
+                    <p class="teacher-subject">Matematika</p>
+                    <p class="teacher-info">Kabinet: [Číslo]</p>
+                    <p class="teacher-info">Email: [Email bude doplněn]</p>
+                    <p class="teacher-info">Ordinační dny: [Časy]</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <h3>[Jméno učitele]</h3>
+                    <p class="teacher-subject">Čeština, Literatura</p>
+                    <p class="teacher-info">Kabinet: [Číslo]</p>
+                    <p class="teacher-info">Email: [Email bude doplněn]</p>
+                    <p class="teacher-info">Ordinační dny: [Časy]</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🏫</div>
+                    <h3>[Jméno učitele]</h3>
+                    <p class="teacher-subject">Anglický jazyk</p>
+                    <p class="teacher-info">Kabinet: [Číslo]</p>
+                    <p class="teacher-info">Email: [Email bude doplněn]</p>
+                    <p class="teacher-info">Ordinační dny: [Časy]</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍💻</div>
+                    <h3>[Jméno učitele]</h3>
+                    <p class="teacher-subject">Informatika, IT</p>
+                    <p class="teacher-info">Kabinet: [Číslo]</p>
+                    <p class="teacher-info">Email: [Email bude doplněn]</p>
+                    <p class="teacher-info">Ordinační dny: [Časy]</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🔬</div>
+                    <h3>[Jméno učitele]</h3>
+                    <p class="teacher-subject">Fyzika</p>
+                    <p class="teacher-info">Kabinet: [Číslo]</p>
+                    <p class="teacher-info">Email: [Email bude doplněn]</p>
+                    <p class="teacher-info">Ordinační dny: [Časy]</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <h3>[Jméno učitele]</h3>
+                    <p class="teacher-subject">Třídní učitel</p>
+                    <p class="teacher-info">Kabinet: [Číslo]</p>
+                    <p class="teacher-info">Email: [Email bude doplněn]</p>
+                    <p class="teacher-info">Ordinační dny: [Časy]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Materials Section -->
+        <section id="materials" class="section" style="display: none;">
+            <h2>Studijní materiály</h2>
+            <div class="materials-container">
+                <div class="materials-list">
+                    <h3>Matematika</h3>
+                    <ul>
+                        <li>
+                            <span>📄 Sbírka příkladů - Kvadratické rovnice</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>📋 Studijní materiál - Funkce</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>✏️ Pracovní list - Limity</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="materials-list">
+                    <h3>Čeština</h3>
+                    <ul>
+                        <li>
+                            <span>📚 Analýza - Rusalka (S. K. Neumann)</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>✍️ Návod na psaní eseje</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>🎯 Příprava na závěrečný test</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="materials-list">
+                    <h3>Anglický jazyk</h3>
+                    <ul>
+                        <li>
+                            <span>🎧 Audio nahrávky - rozhovory</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>📖 Slovní zásoba - Business English</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>📝 Gramatika - Present Perfect</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="materials-list">
+                    <h3>Informatika</h3>
+                    <ul>
+                        <li>
+                            <span>💻 Tutorial - HTML5 a CSS3</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>🐍 Python zadání projektů</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>🗄️ Databáze - SQL příklady</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section" style="display: none;">
+            <h2>Mùj profil</h2>
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar-large">👤</div>
+                    <div class="profile-basic-info">
+                        <h3>[Název uživatele]</h3>
+                        <p class="profile-class">Třída: [Třída]</p>
+                        <p class="profile-role">Žák</p>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <div class="profile-section">
+                        <h4>Osobní údaje</h4>
+                        <p><strong>Jméno a příjmení:</strong> [Bude doplněno po přihlášení]</p>
+                        <p><strong>Rodné číslo:</strong> [Bude doplněno]</p>
+                        <p><strong>Datum narození:</strong> [Bude doplněno]</p>
+                        <p><strong>Pohlaví:</strong> [Bude doplněno]</p>
+                    </div>
+
+                    <div class="profile-section">
+                        <h4>Kontaktní údaje</h4>
+                        <p><strong>Email:</strong> [Bude doplněno po přihlášení]</p>
+                        <p><strong>Telefon:</strong> [Bude doplněno]</p>
+                        <p><strong>Adresa:</strong> [Bude doplněno]</p>
+                    </div>
+
+                    <div class="profile-section">
+                        <h4>Školní údaje</h4>
+                        <p><strong>Třída:</strong> [Bude doplněno]</p>
+                        <p><strong>Třídní učitel:</strong> [Bude doplněno]</p>
+                        <p><strong>Učební obor:</strong> [Bude doplněno]</p>
+                        <p><strong>Školní rok:</strong> 2025/2026</p>
+                    </div>
+
+                    <div class="profile-section">
+                        <h4>Nastavení bezpečnosti</h4>
+                        <button class="btn-secondary">Přihlaste se pro změnu hesla</button>
+                        <button class="btn-secondary">Přihlaste se pro 2FA</button>
+                        <button class="btn-secondary">Přihlaste se pro správu zařízení</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const loginPrompt = document.getElementById('loginPrompt');
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const userGreeting = document.getElementById('userGreeting');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            if (user) {
+                // User is logged in
+                loginPrompt.style.display = 'none';
+                sections.forEach(section => section.style.display = 'none');
+
+                document.getElementById('dashboard').style.display = 'block';
+
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+                logoutBtn.style.display = 'inline-block';
+            } else {
+                // User is not logged in
+                loginPrompt.style.display = 'block';
+                sections.forEach(section => section.style.display = 'none');
+            }
+        }
+
+        function showSection(sectionId) {
+            const user = localStorage.getItem('user');
+
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.style.display = 'block';
+            }
+
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        // Check login on page load
+        checkLogin();
+    </script>
+</body>
+</html>
