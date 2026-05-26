@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přihlášení - Školní portál SPS Trutnov</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-container {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .login-logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-container h1 {
+            font-size: 1.8rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .login-container p {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .remember-forgot label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: #374151;
+            margin: 0;
+        }
+
+        .remember-forgot a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .remember-forgot a:hover {
+            color: #1e40af;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .login-btn:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            margin-top: 1.5rem;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .signup-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .signup-link a:hover {
+            color: #1e40af;
+        }
+
+        .login-info {
+            background-color: #f0f4ff;
+            border-left: 4px solid #2563eb;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            color: #374151;
+            text-align: left;
+        }
+
+        .error-message {
+            background-color: #fee2e2;
+            color: #991b1b;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            border-left: 4px solid #ef4444;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .login-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo">📚</div>
+        <h1>Školní portál</h1>
+        <p>SPS Trutnov</p>
+
+        <div class="login-info">
+            ℹ️ Demo přihlášení - Použijte jakékoliv údaje pro testování
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Uživatelské jméno nebo email</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Zadejte uživatelské jméno"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Heslo</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Zadejte heslo"
+                    required
+                >
+            </div>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" id="remember" name="remember">
+                    Zapamatuj si mě
+                </label>
+                <a href="#">Zapomenuté heslo?</a>
+            </div>
+
+            <button type="submit" class="login-btn">Přihlásit se</button>
+        </form>
+
+        <div class="signup-link">
+            Nemáš účet? <a href="#">Registruj se zde</a>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // Pokud je uživatel už přihlášen, přesměruj na index
+            if (localStorage.getItem('user')) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            var form = document.getElementById('loginForm');
+            var errorMessage = document.getElementById('errorMessage');
+            var usernameInput = document.getElementById('username');
+            var passwordInput = document.getElementById('password');
+            var rememberInput = document.getElementById('remember');
+
+            function showError(msg) {
+                if (!errorMessage) return;
+                errorMessage.textContent = msg;
+                errorMessage.classList.add('show');
+            }
+
+            function hideError() {
+                if (!errorMessage) return;
+                errorMessage.classList.remove('show');
+            }
+
+            if (form) {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    var username = usernameInput ? usernameInput.value.trim() : '';
+                    var password = passwordInput ? passwordInput.value : '';
+                    var remember = rememberInput ? rememberInput.checked : false;
+
+                    if (!username || !password) {
+                        showError('Prosím, vyplňte všechna pole.');
+                        return;
+                    }
+
+                    if (password.length < 3) {
+                        showError('Heslo musí mít alespoň 3 znaky.');
+                        return;
+                    }
+
+                    hideError();
+
+                    localStorage.setItem('user', username);
+                    localStorage.setItem('rememberMe', String(remember));
+
+                    setTimeout(function () {
+                        window.location.href = 'index.html';
+                    }, 500);
+                });
+            }
+
+            if (usernameInput) {
+                usernameInput.addEventListener('input', hideError);
+            }
+
+            if (passwordInput) {
+                passwordInput.addEventListener('input', hideError);
+            }
+        })();
+    </script>
+</body>
+</html>

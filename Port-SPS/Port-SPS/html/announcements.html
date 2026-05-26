@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oznámení - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link active">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="announcements" class="section" style="display: block;">
+            <h2>Oznámení a novinky</h2>
+            <div class="announcements-list">
+                <article class="announcement important">
+                    <div class="announcement-header">
+                        <h3>⚠️ Změna rozvrhu - 30.května</h3>
+                        <span class="announcement-date">26. 05. 2026</span>
+                    </div>
+                    <p>Upozorňujeme na změnu rozvrhů vybraných tříd v pátek 30. května 2026. Všechny změny naleznete v sekci Rozvrh.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>📢 Projektový den - Červn 2026</h3>
+                        <span class="announcement-date">25. 05. 2026</span>
+                    </div>
+                    <p>Projektový den se bude konat ve středu 30. května. Témata projektů budou Shortly zveřejněna.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>🔧 Údržba vzdělávacího portálu</h3>
+                        <span class="announcement-date">24. 05. 2026</span>
+                    </div>
+                    <p>V sobotu 31. května bude probíhat pravidelná údržba portálu. V tomto čase nebude možné používat portál.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>🎉 Školní výlet - červen</h3>
+                        <span class="announcement-date">23. 05. 2026</span>
+                    </div>
+                    <p>Školní výlet se bude konat v pátek 2. června. Bližší informace a seznam účastníků budou zveřejněny v příslušné sekci.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>📚 Nové učební materiály</h3>
+                        <span class="announcement-date">22. 05. 2026</span>
+                    </div>
+                    <p>V sekci Materiály naleznete nové učební texty a příklady ke zbývajícím tématům prvního pololetí.</p>
+                </article>
+
+                <article class="announcement">
+                    <div class="announcement-header">
+                        <h3>✅ Závěrečné zkoušky - harmonogram</h3>
+                        <span class="announcement-date">21. 05. 2026</span>
+                    </div>
+                    <p>Harmonogram závěrečných zkoušek je již připraven. Příslušné třídy byly seznámeny s termíny. Bližší informace v sekci Oznámení.</p>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

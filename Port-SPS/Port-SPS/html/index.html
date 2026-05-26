@@ -7,42 +7,61 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <h1>📚 SPS Trutnov</h1>
-                <p>Školní portál</p>
+    <div class="splash-container">
+        <div class="splash-content">
+            <h1>📚 SPS Trutnov</h1>
+            <p>Školní portál</p>
+            <p style="font-size: 1rem; opacity: 0.9;">Kompletní řešení pro správu školních informací a komunikaci</p>
+            
+            <div class="cta-buttons">
+                <a href="login.html" class="cta-btn primary">Přihlásit se</a>
+                <a href="dashboard.html" class="cta-btn secondary">Pokud jste přihlášeni</a>
             </div>
-            <div class="user-info">
-                <span class="user-greeting" id="userGreeting"></span>
-                <button class="logout-btn" onclick="handleLogout()" id="logoutBtn" style="display: none;">Odhlásit se</button>
+
+            <div class="splash-features">
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-text">Přehled</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-text">Rozvrh</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📝</div>
+                    <div class="feature-text">Známky</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-text">Zprávy</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-text">Třídy</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚻</div>
+                    <div class="feature-text">Toalety</div>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="nav-menu">
-        <div class="nav-container">
-            <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">Přehled</a>
-            <a href="#schedule" class="nav-link" onclick="showSection('schedule')">Rozvrh</a>
-            <a href="#grades" class="nav-link" onclick="showSection('grades')">Známky</a>
-            <a href="#messages" class="nav-link" onclick="showSection('messages')">Zprávy</a>
-            <a href="#classes" class="nav-link" onclick="showSection('classes')">Třídy</a>
-            <a href="#announcements" class="nav-link" onclick="showSection('announcements')">Oznámení</a>
-            <a href="#teachers" class="nav-link" onclick="showSection('teachers')">Učitelé</a>
-            <a href="#materials" class="nav-link" onclick="showSection('materials')">Materiály</a>
-            <a href="#profile" class="nav-link" onclick="showSection('profile')">Profil</a>
+    <!-- Footer -->
+    <footer class="footer" style="position: absolute; bottom: 0; width: 100%;">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
         </div>
-    </nav>
+    </footer>
 
-    <div class="container">
-        <!-- Login Prompt -->
-        <div id="loginPrompt" class="card" style="text-align: center; padding: 3rem;">
-            <h2>🔒 Přihlášení vyžadováno</h2>
-            <p style="color: #6b7280; font-size: 1.1rem; margin: 1rem 0;">Prosím, přihlaste se pro přístup k portálu</p>
-            <a href="login.html" class="btn-primary" style="display: inline-block; padding: 0.75rem 2rem; text-decoration: none; margin-top: 1rem; border-radius: 0.375rem; background-color: #2563eb; color: white; font-weight: 600;">Jít na přihlášení</a>
-        </div>
+    <script>
+        // If user is logged in, redirect to dashboard
+        if (localStorage.getItem('user')) {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
 
         <!-- Dashboard Section -->
         <section id="dashboard" class="section" style="display: none;">

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toalety - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link active">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="toilets" class="section" style="display: block;">
+            <h2>🚻 Stav a rezervace toalet</h2>
+            
+            <div class="message" id="message"></div>
+
+            <div class="toilets-content">
+                <!-- Patra 1 a 2 -->
+                <div class="toilet-section">
+                    <h3>1. Patro - Levá strana</h3>
+                    
+                    <div class="legend">
+                        <div class="legend-item available">
+                            <div class="legend-color"></div>
+                            <span>Volná</span>
+                        </div>
+                        <div class="legend-item occupied">
+                            <div class="legend-color"></div>
+                            <span>Obsazená</span>
+                        </div>
+                    </div>
+
+                    <div class="toilet-info">
+                        <p><strong>Poloha:</strong> Vedle kantýny</p>
+                        <p><strong>Kapacita:</strong> 8 kabinek</p>
+                        <p><strong>Otevírací doba:</strong> 7:00 - 16:00</p>
+                    </div>
+
+                    <div class="toilet-grid" id="floor1">
+                        <!-- Obsazen JavaScriptem -->
+                    </div>
+                </div>
+
+                <!-- Patra 2 -->
+                <div class="toilet-section">
+                    <h3>2. Patro - Pravá strana</h3>
+                    
+                    <div class="legend">
+                        <div class="legend-item available">
+                            <div class="legend-color"></div>
+                            <span>Volná</span>
+                        </div>
+                        <div class="legend-item occupied">
+                            <div class="legend-color"></div>
+                            <span>Obsazená</span>
+                        </div>
+                    </div>
+
+                    <div class="toilet-info">
+                        <p><strong>Poloha:</strong> Vedle učeben IT</p>
+                        <p><strong>Kapacita:</strong> 8 kabinek</p>
+                        <p><strong>Otevírací doba:</strong> 7:00 - 16:00</p>
+                    </div>
+
+                    <div class="toilet-grid" id="floor2">
+                        <!-- Obsazen JavaScriptem -->
+                    </div>
+                </div>
+
+                <!-- Rezervace -->
+                <div class="toilet-section">
+                    <h3>Objednat kabinku</h3>
+                    
+                    <div class="booking-form">
+                        <h4>Nová rezervace</h4>
+                        
+                        <div class="form-group">
+                            <label for="location">Vyber lokalitu:</label>
+                            <select id="location" required>
+                                <option value="">-- Vyber možnost --</option>
+                                <option value="floor1">1. Patro - Levá strana</option>
+                                <option value="floor2">2. Patro - Pravá strana</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Čas pobytu (minuty):</label>
+                            <input type="number" id="time" min="5" max="30" value="10" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Důvod (volitelné):</label>
+                            <input type="text" id="reason" placeholder="Např. přestávka, zdravotní důvod..." maxlength="50">
+                        </div>
+
+                        <button class="booking-btn" onclick="makeBooking()">Objednat kabinku</button>
+                    </div>
+                </div>
+
+                <!-- Moje rezervace -->
+                <div class="toilet-section">
+                    <h3>Moje rezervace</h3>
+                    
+                    <ul class="bookings-list" id="myBookings">
+                        <li class="booking-item empty">
+                            <span>Nemáte žádné aktivní rezervace</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Statistika -->
+            <div class="toilet-section" style="margin-top: 2rem;">
+                <h3>📊 Statistika a informace</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="toilet-info">
+                        <strong style="display: block; margin-bottom: 1rem; color: var(--primary-color);">Obsazenost v reálném čase</strong>
+                        <p><strong>1. Patro:</strong> <span id="occupancy1">0</span>/8 kabinek</p>
+                        <p><strong>2. Patro:</strong> <span id="occupancy2">0</span>/8 kabinek</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">Údaje se aktualizují každých 5 sekund</p>
+                    </div>
+
+                    <div class="toilet-info">
+                        <strong style="display: block; margin-bottom: 1rem; color: var(--primary-color);">Pravidla používání</strong>
+                        <p>✓ Dodržujte dobu pobytu</p>
+                        <p>✓ Ponechte prostor čistý</p>
+                        <p>✓ Reportujte poškození správci</p>
+                        <p>✓ Max. 30 minut na použití</p>
+                    </div>
+
+                    <div class="toilet-info">
+                        <strong style="display: block; margin-bottom: 1rem; color: var(--primary-color);">Kontakt na správce</strong>
+                        <p><strong>Jméno:</strong> Jan Kučera</p>
+                        <p><strong>Email:</strong> kucera@spstrutnov.cz</p>
+                        <p><strong>Telefon:</strong> +420 123 456 789</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toilet system data
+        let toiletStalls = {
+            floor1: [
+                { id: 1, status: 'available' },
+                { id: 2, status: 'occupied' },
+                { id: 3, status: 'available' },
+                { id: 4, status: 'available' },
+                { id: 5, status: 'occupied' },
+                { id: 6, status: 'available' },
+                { id: 7, status: 'available' },
+                { id: 8, status: 'available' }
+            ],
+            floor2: [
+                { id: 1, status: 'available' },
+                { id: 2, status: 'available' },
+                { id: 3, status: 'occupied' },
+                { id: 4, status: 'available' },
+                { id: 5, status: 'available' },
+                { id: 6, status: 'occupied' },
+                { id: 7, status: 'available' },
+                { id: 8, status: 'available' }
+            ]
+        };
+
+        let userBookings = JSON.parse(localStorage.getItem('userBookings')) || [];
+
+        function renderToiletGrid(floor, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            toiletStalls[floor].forEach(stall => {
+                const div = document.createElement('div');
+                div.className = `toilet-stall ${stall.status}`;
+                div.innerHTML = `🚽<div class="toilet-label">${stall.id}</div>`;
+                div.onclick = () => {
+                    if (stall.status === 'available') {
+                        document.getElementById('location').value = floor;
+                        document.getElementById('location').scrollIntoView({ behavior: 'smooth' });
+                    }
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function updateOccupancy() {
+            const occ1 = toiletStalls.floor1.filter(s => s.status === 'occupied').length;
+            const occ2 = toiletStalls.floor2.filter(s => s.status === 'occupied').length;
+            document.getElementById('occupancy1').textContent = occ1;
+            document.getElementById('occupancy2').textContent = occ2;
+        }
+
+        function renderBookings() {
+            const bookingsList = document.getElementById('myBookings');
+            
+            const activeBookings = userBookings.filter(b => new Date(b.endTime) > new Date());
+            
+            if (activeBookings.length === 0) {
+                bookingsList.innerHTML = '<li class="booking-item empty"><span>Nemáte žádné aktivní rezervace</span></li>';
+                return;
+            }
+
+            bookingsList.innerHTML = activeBookings.map((booking, index) => {
+                const startTime = new Date(booking.startTime).toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+                const endTime = new Date(booking.endTime).toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+                const location = booking.floor === 'floor1' ? '1. Patro' : '2. Patro';
+                
+                return `
+                    <li class="booking-item">
+                        <div class="booking-details">
+                            <strong>${location}</strong>
+                            <span>${startTime} - ${endTime}</span>
+                            ${booking.reason ? `<small>${booking.reason}</small>` : ''}
+                        </div>
+                        <button class="cancel-btn" onclick="cancelBooking(${index})">Zrušit</button>
+                    </li>
+                `;
+            }).join('');
+        }
+
+        function makeBooking() {
+            const location = document.getElementById('location').value;
+            const time = parseInt(document.getElementById('time').value);
+            const reason = document.getElementById('reason').value;
+
+            if (!location) {
+                showMessage('Vyberte prosím lokalitu', 'error');
+                return;
+            }
+
+            const now = new Date();
+            const startTime = new Date(now.getTime() + 5 * 60000); // Start in 5 minutes
+            const endTime = new Date(startTime.getTime() + time * 60000);
+
+            const booking = {
+                floor: location,
+                startTime: startTime.toISOString(),
+                endTime: endTime.toISOString(),
+                reason: reason
+            };
+
+            userBookings.push(booking);
+            localStorage.setItem('userBookings', JSON.stringify(userBookings));
+
+            showMessage(`✓ Rezervace úspěšně vytvořena! Kabinka je rezervována od ${startTime.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' })}`, 'success');
+            
+            document.getElementById('location').value = '';
+            document.getElementById('time').value = '10';
+            document.getElementById('reason').value = '';
+            
+            renderBookings();
+            
+            // Simulate occupancy change
+            setTimeout(() => {
+                if (location === 'floor1') {
+                    toiletStalls.floor1[0].status = 'occupied';
+                } else {
+                    toiletStalls.floor2[0].status = 'occupied';
+                }
+                renderToiletGrid(location, location === 'floor1' ? 'floor1' : 'floor2');
+                updateOccupancy();
+                
+                setTimeout(() => {
+                    if (location === 'floor1') {
+                        toiletStalls.floor1[0].status = 'available';
+                    } else {
+                        toiletStalls.floor2[0].status = 'available';
+                    }
+                    renderToiletGrid(location, location === 'floor1' ? 'floor1' : 'floor2');
+                    updateOccupancy();
+                }, time * 60000);
+            }, 5 * 60000);
+        }
+
+        function cancelBooking(index) {
+            userBookings.splice(index, 1);
+            localStorage.setItem('userBookings', JSON.stringify(userBookings));
+            showMessage('✓ Rezervace byla zrušena', 'success');
+            renderBookings();
+        }
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            setTimeout(() => {
+                messageEl.className = 'message';
+            }, 5000);
+        }
+
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        // Initialize
+        checkLogin();
+        renderToiletGrid('floor1', 'floor1');
+        renderToiletGrid('floor2', 'floor2');
+        updateOccupancy();
+        renderBookings();
+
+        // Update occupancy every 5 seconds (simulate real-time changes)
+        setInterval(() => {
+            // Randomly change some stalls
+            if (Math.random() > 0.8) {
+                const floor = Math.random() > 0.5 ? 'floor1' : 'floor2';
+                const stall = Math.floor(Math.random() * 8);
+                toiletStalls[floor][stall].status = toiletStalls[floor][stall].status === 'occupied' ? 'available' : 'occupied';
+                renderToiletGrid(floor, floor);
+            }
+            updateOccupancy();
+        }, 5000);
+    </script>
+</body>
+</html>

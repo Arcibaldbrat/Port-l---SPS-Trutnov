@@ -1,2 +1,2 @@
 # Port-l---SPS-Trutnov
-ari je kapo 
+ari není kapo 

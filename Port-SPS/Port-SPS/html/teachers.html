@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Učitelé - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link active">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="teachers" class="section" style="display: block;">
+            <h2>Pedagogický sbor</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🏫</div>
+                    <h3>Mgr. Petr Svoboda</h3>
+                    <p class="teacher-subject">Matematika</p>
+                    <p class="teacher-info">Kabinet: 210</p>
+                    <p class="teacher-info">Email: svoboda@spstrutnov.cz</p>
+                    <p class="teacher-info">Ordinační dny: Pondělí 14:00-15:00</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <h3>Mgr. Michaela Kováčová</h3>
+                    <p class="teacher-subject">Čeština, Literatura</p>
+                    <p class="teacher-info">Kabinet: 315</p>
+                    <p class="teacher-info">Email: kovacova@spstrutnov.cz</p>
+                    <p class="teacher-info">Ordinační dny: Středa 14:00-15:00</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🏫</div>
+                    <h3>Mgr. David Johnson</h3>
+                    <p class="teacher-subject">Anglický jazyk</p>
+                    <p class="teacher-info">Kabinet: 405</p>
+                    <p class="teacher-info">Email: johnson@spstrutnov.cz</p>
+                    <p class="teacher-info">Ordinační dny: Čtvrtek 14:00-15:00</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍💻</div>
+                    <h3>Doc. Ing. Václav Malý</h3>
+                    <p class="teacher-subject">Informatika, IT</p>
+                    <p class="teacher-info">Kabinet: 501</p>
+                    <p class="teacher-info">Email: maly@spstrutnov.cz</p>
+                    <p class="teacher-info">Ordinační dny: Úterý 14:00-15:00</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👨‍🔬</div>
+                    <h3>Mgr. Karel Novák</h3>
+                    <p class="teacher-subject">Fyzika</p>
+                    <p class="teacher-info">Kabinet: 220</p>
+                    <p class="teacher-info">Email: novak@spstrutnov.cz</p>
+                    <p class="teacher-info">Ordinační dny: Pondělí 15:00-16:00</p>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="teacher-avatar">👩‍🏫</div>
+                    <h3>Mgr. Jana Novotná</h3>
+                    <p class="teacher-subject">Třídní učitel</p>
+                    <p class="teacher-info">Kabinet: 305</p>
+                    <p class="teacher-info">Email: novotna@spstrutnov.cz</p>
+                    <p class="teacher-info">Ordinační dny: Pátek 14:00-15:00</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

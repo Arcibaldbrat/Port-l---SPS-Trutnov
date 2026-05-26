@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Třídy a skupiny - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link active">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="classes" class="section" style="display: block;">
+            <h2>Třídy a skupiny</h2>
+            <div class="classes-grid">
+                <div class="class-card">
+                    <h3>4.IT-A</h3>
+                    <p class="class-info"><strong>Třídní učitel:</strong> Mgr. Jana Novotná</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 28</p>
+                    <p class="class-info"><strong>Místnost:</strong> 305</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Matematika (A)</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> Mgr. Petr Svoboda</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 15</p>
+                    <p class="class-info"><strong>Místnost:</strong> 210</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Český jazyk a literatura</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> Mgr. Michaela Kováčová</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 28</p>
+                    <p class="class-info"><strong>Místnost:</strong> 315</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Anglický jazyk (B2)</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> Mgr. David Johnson</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 20</p>
+                    <p class="class-info"><strong>Místnost:</strong> 405</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Informatika - Programování</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> Doc. Ing. Václav Malý</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 18</p>
+                    <p class="class-info"><strong>Místnost:</strong> 501 (Počítačová učebna)</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+
+                <div class="class-card">
+                    <h3>Tělesná výchova - Chlapci</h3>
+                    <p class="class-info"><strong>Vyučující:</strong> Mgr. Tomáš Horák</p>
+                    <p class="class-info"><strong>Počet žáků:</strong> 16</p>
+                    <p class="class-info"><strong>Místnost:</strong> Tělocvična</p>
+                    <button class="btn-secondary">Zobrazit členy</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

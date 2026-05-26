@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Načítání - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="margin: 0; padding: 0;">
+    <div class="loading-container">
+        <div class="loading-content">
+            <h1 class="loading-title">📚 SPS Trutnov</h1>
+            <p class="loading-subtitle">Školní portál</p>
+            
+            <div class="loading-icons">
+                <div class="loading-icon">📖</div>
+                <div class="loading-icon">✏️</div>
+                <div class="loading-icon">📊</div>
+                <div class="loading-icon">💬</div>
+                <div class="loading-icon">🎓</div>
+            </div>
+            
+            <p class="loading-text">Načítání...</p>
+        </div>
+    </div>
+
+    <script>
+        // Automatic redirect after 3 seconds
+        setTimeout(() => {
+            const user = localStorage.getItem('user');
+            if (user) {
+                window.location.href = 'dashboard.html';
+            } else {
+                window.location.href = 'login.html';
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

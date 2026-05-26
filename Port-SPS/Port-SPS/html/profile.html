@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mùj profil - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link active">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="profile" class="section" style="display: block;">
+            <h2>Mùj profil</h2>
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar-large">👤</div>
+                    <div class="profile-basic-info">
+                        <h3>Jan Novák</h3>
+                        <p class="profile-class">Třída: 4.IT-A</p>
+                        <p class="profile-role">Žák</p>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <div class="profile-section">
+                        <h4>Osobní údaje</h4>
+                        <p><strong>Jméno a příjmení:</strong> Jan Novák</p>
+                        <p><strong>Rodné číslo:</strong> 050305/1234</p>
+                        <p><strong>Datum narození:</strong> 5.3.2005</p>
+                        <p><strong>Pohlaví:</strong> Muž</p>
+                    </div>
+
+                    <div class="profile-section">
+                        <h4>Kontaktní údaje</h4>
+                        <p><strong>Email:</strong> jan.novak@spstrutnov.cz</p>
+                        <p><strong>Telefon:</strong> +420 775 123 456</p>
+                        <p><strong>Adresa:</strong> Ulice 123, Trutnov, 541 01</p>
+                    </div>
+
+                    <div class="profile-section">
+                        <h4>Školní údaje</h4>
+                        <p><strong>Třída:</strong> 4.IT-A</p>
+                        <p><strong>Třídní učitel:</strong> Mgr. Jana Novotná</p>
+                        <p><strong>Učební obor:</strong> Informační technologie</p>
+                        <p><strong>Školní rok:</strong> 2025/2026</p>
+                    </div>
+
+                    <div class="profile-section">
+                        <h4>Nastavení bezpečnosti</h4>
+                        <button class="btn-secondary" onclick="alert('Změna hesla není v demo modu aktivní')">Změna hesla</button>
+                        <button class="btn-secondary" onclick="alert('Dvoufaktorová autentizace není v demo modu aktivní')">Aktivovat 2FA</button>
+                        <button class="btn-secondary" onclick="alert('Správa zařízení není v demo modu aktivní')">Správa připojených zařízení</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

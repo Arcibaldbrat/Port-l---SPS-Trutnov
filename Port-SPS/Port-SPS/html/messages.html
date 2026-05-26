@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zprávy - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link active">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="messages" class="section" style="display: block;">
+            <h2>Zprávy</h2>
+            <div class="messages-container">
+                <div class="messages-sidebar">
+                    <h3>Konverzace</h3>
+                    <ul class="conversations-list">
+                        <li class="conversation active">
+                            <span class="conv-avatar">📌</span>
+                            <span class="conv-name">Učitel</span>
+                            <span class="unread-badge">1</span>
+                        </li>
+                        <li class="conversation">
+                            <span class="conv-avatar">👨‍🏫</span>
+                            <span class="conv-name">Třídní učitel</span>
+                            <span class="unread-badge">2</span>
+                        </li>
+                        <li class="conversation">
+                            <span class="conv-avatar">💻</span>
+                            <span class="conv-name">Administrace</span>
+                        </li>
+                        <li class="conversation">
+                            <span class="conv-avatar">👩‍💼</span>
+                            <span class="conv-name">Vedení školy</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="messages-content">
+                    <div class="message-header">
+                        <h3>Konverzace s učitelem</h3>
+                        <button class="btn-small">Smaž rozhovor</button>
+                    </div>
+
+                    <div class="messages-list">
+                        <div class="message received">
+                            <p>Ahoj, jak se vám dařilo s domácím úkolem?</p>
+                            <span class="message-time">10:30</span>
+                        </div>
+                        <div class="message sent">
+                            <p>Dobrý den, úkol se mi daří, měl bych hotovo do pátku.</p>
+                            <span class="message-time">10:35</span>
+                        </div>
+                        <div class="message received">
+                            <p>Výborně, těším se na vaši práci!</p>
+                            <span class="message-time">10:36</span>
+                        </div>
+                    </div>
+
+                    <div class="message-input-area">
+                        <textarea placeholder="Napište vaši zprávu..."></textarea>
+                        <button class="btn-primary">Poslat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

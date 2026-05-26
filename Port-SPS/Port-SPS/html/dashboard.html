@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přehled - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link active">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section" style="display: block;">
+            <h2>Přehled</h2>
+            
+            <div class="dashboard-grid">
+                <!-- Quick Stats -->
+                <div class="card stats-card">
+                    <h3>Statistika</h3>
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <span class="stat-number">8.5</span>
+                            <span class="stat-label">Průměr známek</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Nečtené zprávy</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Domácí úkoly</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">96%</span>
+                            <span class="stat-label">Docházka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="card">
+                    <h3>🗓️ Nadcházející akce</h3>
+                    <ul class="event-list">
+                        <li>
+                            <span class="event-date">28.05.</span>
+                            <span class="event-title">Písemka z matematiky</span>
+                        </li>
+                        <li>
+                            <span class="event-date">30.05.</span>
+                            <span class="event-title">Projektový den</span>
+                        </li>
+                        <li>
+                            <span class="event-date">02.06.</span>
+                            <span class="event-title">Školní výlet</span>
+                        </li>
+                        <li>
+                            <span class="event-date">05.06.</span>
+                            <span class="event-title">Závěrečné zkoušky</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Latest Grades -->
+                <div class="card">
+                    <h3>📊 Poslední známky</h3>
+                    <table class="grade-table">
+                        <tr>
+                            <td><strong>Matematika</strong></td>
+                            <td><span class="grade-1">1</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Čeština</strong></td>
+                            <td><span class="grade-2">2</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anglický jazyk</strong></td>
+                            <td><span class="grade-1">1</span></td>
+                        </tr>
+                    </table>
+                    <a href="grades.html" style="color: #2563eb; text-decoration: none; display: block; margin-top: 1rem;"><strong>Zobrazit všechny známky →</strong></a>
+                </div>
+
+                <!-- Messages Preview -->
+                <div class="card">
+                    <h3>💬 Poslední zprávy</h3>
+                    <ul class="message-list" style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+                            <strong>Třídní učitel:</strong> Nezapomeňte na projekt
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">
+                            <strong>Fyzika:</strong> Materiály na příští hodinu
+                        </li>
+                        <li style="padding: 0.5rem 0;">
+                            <strong>Administrace:</strong> Upozornění na termín podání přihlášek
+                        </li>
+                    </ul>
+                    <a href="messages.html" style="color: #2563eb; text-decoration: none; display: block; margin-top: 1rem;"><strong>Zobrazit všechny zprávy →</strong></a>
+                </div>
+
+                <!-- Homework -->
+                <div class="card">
+                    <h3>✏️ Domácí úkoly</h3>
+                    <ul class="homework-list">
+                        <li><strong>Matematika:</strong> Příklady 1-15, str. 45</li>
+                        <li><strong>Čeština:</strong> Analýza básně (Neruda)</li>
+                        <li><strong>Anglický jazyk:</strong> Cvičení na Present Perfect</li>
+                    </ul>
+                </div>
+
+                <!-- Attendance -->
+                <div class="card">
+                    <h3>📋 Docházka</h3>
+                    <div class="attendance-bar">
+                        <div class="attendance-fill" style="width: 96%;">96%</div>
+                    </div>
+                    <p class="small-text">Přítomný: 96 lekcí | Absence: 4 lekce</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

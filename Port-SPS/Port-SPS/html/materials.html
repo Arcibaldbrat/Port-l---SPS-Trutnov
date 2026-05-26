@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiály - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link active">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="materials" class="section" style="display: block;">
+            <h2>Studijní materiály</h2>
+            <div class="materials-container">
+                <div class="materials-list">
+                    <h3>Matematika</h3>
+                    <ul>
+                        <li>
+                            <span>📄 Sbírka příkladů - Kvadratické rovnice</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>📋 Studijní materiál - Funkce</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>✏️ Pracovní list - Limity</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="materials-list">
+                    <h3>Čeština</h3>
+                    <ul>
+                        <li>
+                            <span>📚 Analýza - Rusalka (S. K. Neumann)</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>✍️ Návod na psaní eseje</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>🎯 Příprava na závěrečný test</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="materials-list">
+                    <h3>Anglický jazyk</h3>
+                    <ul>
+                        <li>
+                            <span>🎧 Audio nahrávky - rozhovory</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>📖 Slovní zásoba - Business English</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>📝 Gramatika - Present Perfect</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="materials-list">
+                    <h3>Informatika</h3>
+                    <ul>
+                        <li>
+                            <span>💻 Tutorial - HTML5 a CSS3</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>🐍 Python zadání projektů</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                        <li>
+                            <span>🗄️ Databáze - SQL příklady</span>
+                            <button class="btn-download">Stáhnout</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

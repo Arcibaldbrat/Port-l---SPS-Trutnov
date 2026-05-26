@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozvrh - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>📚 SPS Trutnov</h1>
+                <p>Školní portál</p>
+            </div>
+            <div class="user-info">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-link">Přehled</a>
+            <a href="schedule.html" class="nav-link active">Rozvrh</a>
+            <a href="grades.html" class="nav-link">Známky</a>
+            <a href="messages.html" class="nav-link">Zprávy</a>
+            <a href="classes.html" class="nav-link">Třídy</a>
+            <a href="announcements.html" class="nav-link">Oznámení</a>
+            <a href="teachers.html" class="nav-link">Učitelé</a>
+            <a href="materials.html" class="nav-link">Materiály</a>
+            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
+            <a href="profile.html" class="nav-link">Profil</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="schedule" class="section" style="display: block;">
+            <h2>Rozvrh hodin</h2>
+            <div class="timetable">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Čas</th>
+                            <th>Pondělí</th>
+                            <th>Úterý</th>
+                            <th>Středa</th>
+                            <th>Čtvrtek</th>
+                            <th>Pátek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time">08:00-08:45</td>
+                            <td>Matematika</td>
+                            <td>Čeština</td>
+                            <td>Anglický jazyk</td>
+                            <td>Informatika</td>
+                            <td>Fyzika</td>
+                        </tr>
+                        <tr>
+                            <td class="time">08:55-09:40</td>
+                            <td>Anglický jazyk</td>
+                            <td>Matematika</td>
+                            <td>Informatika</td>
+                            <td>Tělesná výchova</td>
+                            <td>Čeština</td>
+                        </tr>
+                        <tr>
+                            <td class="time">09:50-10:35</td>
+                            <td>Fyzika</td>
+                            <td>Informatika</td>
+                            <td>Matematika</td>
+                            <td>Čeština</td>
+                            <td>Anglický jazyk</td>
+                        </tr>
+                        <tr>
+                            <td class="time">10:45-11:30</td>
+                            <td colspan="5" class="info-cell">☕ PŘESTÁVKA 10 MINUT ☕</td>
+                        </tr>
+                        <tr>
+                            <td class="time">11:30-12:15</td>
+                            <td>Čeština</td>
+                            <td>Fyzika</td>
+                            <td>Tělesná výchova</td>
+                            <td>Matematika</td>
+                            <td>Informatika</td>
+                        </tr>
+                        <tr>
+                            <td class="time">12:25-13:10</td>
+                            <td>Informatika</td>
+                            <td>Anglický jazyk</td>
+                            <td>Fyzika</td>
+                            <td>Anglický jazyk</td>
+                            <td>Matematika</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
+            <div class="footer-links">
+                <a href="#">Ochrana osobních údajů</a> | 
+                <a href="#">Podmínky používání</a> | 
+                <a href="#">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function checkLogin() {
+            const user = localStorage.getItem('user');
+            const userGreeting = document.getElementById('userGreeting');
+
+            if (user) {
+                userGreeting.textContent = `Dobrý den, ${user}!`;
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'login.html';
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>
