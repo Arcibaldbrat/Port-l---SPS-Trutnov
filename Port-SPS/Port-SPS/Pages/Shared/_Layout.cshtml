@@ -13,8 +13,11 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <h1>📚 SPS Trutnov</h1>
-                <p>Školní portál</p>
+                <img src="~/images/logo-spstrutnov.jpg" alt="Logo" class="logo-img" />
+                <div>
+                    <h1>📚 SPS Trutnov</h1>
+                    <p>Školní portál</p>
+                </div>
             </div>
             <div class="user-info">
                 @if (User.Identity?.IsAuthenticated ?? false)
