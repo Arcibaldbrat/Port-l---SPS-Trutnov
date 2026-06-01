@@ -31,6 +31,16 @@ body {
     line-height: 1.6;
 }
 
+/* ==================== ANIMATIONS ==================== */
+@keyframes spin-aggressive {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* ==================== HEADER ==================== */
 .header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
@@ -49,6 +59,18 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    animation: spin-aggressive 1s linear infinite;
 }
 
 .logo h1 {
@@ -876,6 +898,29 @@ section h2 {
 
 .footer-links a:hover {
     color: white;
+}
+
+/* ==================== GRADES BACKGROUND ==================== */
+#grades-with-logo {
+    position: relative;
+}
+
+#grades-with-logo::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('elogo.png');
+    background-size: 400px 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.08;
+    animation: spin-aggressive 10s linear infinite;
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* ==================== RESPONSIVE ==================== */
