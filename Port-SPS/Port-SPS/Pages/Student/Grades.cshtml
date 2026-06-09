@@ -2,52 +2,460 @@
 @using Port_SPS.Pages
 @model GradesModel
 @{
-    ViewData["Title"] = "Známky";
+    ViewData["Title"] = "Známky - SPS Trutnov";
 }
 
-<h2>📈 Moje známky</h2>
-<div class="grades-grid">
-    <div class="subject-card">
-        <h3>Matematika</h3>
-        <p class="subject-average">Průměr: <strong>8.2</strong></p>
-        <ul class="grades-list">
-            <li><span>Písemka - Kvadratické rovnice</span> <span class="grade-1">1</span></li>
-            <li><span>Ústní odpověď</span> <span class="grade-1">1</span></li>
-            <li><span>Domácí úkol - průměr</span> <span class="grade-2">2</span></li>
-            <li><span>Test - Funkce</span> <span class="grade-1">1</span></li>
-        </ul>
+<div class="page-grades">
+    <div class="grades-header">
+        <h1>📈 Moje známky</h1>
+        <p class="grades-subtitle">Přehled vašich školních výsledků za aktuální období</p>
     </div>
 
-    <div class="subject-card">
-        <h3>Čeština</h3>
-        <p class="subject-average">Průměr: <strong>8.7</strong></p>
-        <ul class="grades-list">
-            <li><span>Esej - Klasická literatura</span> <span class="grade-1">1</span></li>
-            <li><span>Diktat</span> <span class="grade-2">2</span></li>
-            <li><span>Čtenářský deník</span> <span class="grade-1">1</span></li>
-            <li><span>Ústní odpověď</span> <span class="grade-2">2</span></li>
-        </ul>
+    <div class="grades-summary">
+        <div class="summary-card">
+            <div class="summary-icon">📊</div>
+            <div class="summary-info">
+                <h3>Celkový průměr</h3>
+                <p class="summary-value">8.4</p>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">✅</div>
+            <div class="summary-info">
+                <h3>Nejlepší předmět</h3>
+                <p class="summary-value">Anglický jazyk (9.0)</p>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">📝</div>
+            <div class="summary-info">
+                <h3>K překonání</h3>
+                <p class="summary-value">Fyzika (8.3)</p>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">🎯</div>
+            <div class="summary-info">
+                <h3>Zápisy</h3>
+                <p class="summary-value">24 výpisů</p>
+            </div>
+        </div>
     </div>
 
-    <div class="subject-card">
-        <h3>Anglický jazyk</h3>
-        <p class="subject-average">Průměr: <strong>9.0</strong></p>
-        <ul class="grades-list">
-            <li><span>Written test</span> <span class="grade-1">1</span></li>
-            <li><span>Listening comprehension</span> <span class="grade-1">1</span></li>
-            <li><span>Speaking practice</span> <span class="grade-1">1</span></li>
-            <li><span>Prezentace</span> <span class="grade-1">1</span></li>
-        </ul>
-    </div>
+    <div class="grades-container">
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>📐 Matematika</h2>
+                <span class="average-badge">8.2</span>
+            </div>
+            <ul class="grades-list">
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Písemka - Kvadratické rovnice</span>
+                        <span class="grade-date">22. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Ústní odpověď</span>
+                        <span class="grade-date">20. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Domácí úkol - průměr</span>
+                        <span class="grade-date">Průběžně</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Test - Funkce</span>
+                        <span class="grade-date">18. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Prezentace - Kombinatorika</span>
+                        <span class="grade-date">15. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+            </ul>
+        </div>
 
-    <div class="subject-card">
-        <h3>Fyzika</h3>
-        <p class="subject-average">Průměr: <strong>8.3</strong></p>
-        <ul class="grades-list">
-            <li><span>Praktické cvičení - optika</span> <span class="grade-1">1</span></li>
-            <li><span>Test - Mechanika</span> <span class="grade-2">2</span></li>
-            <li><span>Písemky - průměr</span> <span class="grade-2">2</span></li>
-            <li><span>Projekt - fyzikální experiment</span> <span class="grade-1">1</span></li>
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>📖 Čeština</h2>
+                <span class="average-badge">8.7</span>
+            </div>
+            <ul class="grades-list">
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Esej - Klasická literatura</span>
+                        <span class="grade-date">21. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Diktat</span>
+                        <span class="grade-date">19. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Čtenářský deník</span>
+                        <span class="grade-date">17. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Ústní odpověď</span>
+                        <span class="grade-date">14. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>🌐 Anglický jazyk</h2>
+                <span class="average-badge excellent">9.0</span>
+            </div>
+            <ul class="grades-list">
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Written test</span>
+                        <span class="grade-date">23. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Listening comprehension</span>
+                        <span class="grade-date">20. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Speaking practice</span>
+                        <span class="grade-date">16. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Prezentace - Business</span>
+                        <span class="grade-date">13. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>⚛️ Fyzika</h2>
+                <span class="average-badge">8.3</span>
+            </div>
+            <ul class="grades-list">
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Praktické cvičení - optika</span>
+                        <span class="grade-date">21. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Test - Mechanika</span>
+                        <span class="grade-date">18. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Písemky - průměr</span>
+                        <span class="grade-date">Průběžně</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Projekt - fyzikální experiment</span>
+                        <span class="grade-date">15. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>💻 Informatika</h2>
+                <span class="average-badge">8.5</span>
+            </div>
+            <ul class="grades-list">
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Projekt - Webová stránka</span>
+                        <span class="grade-date">22. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Test - C# základy</span>
+                        <span class="grade-date">19. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Cvičení - SQL dotazy</span>
+                        <span class="grade-date">16. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subject-card">
+            <div class="subject-header">
+                <h2>🧪 Chemie</h2>
+                <span class="average-badge">8.0</span>
+            </div>
+            <ul class="grades-list">
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Praktická cvičení - perioda</span>
+                        <span class="grade-date">20. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Test - Chemické vazby</span>
+                        <span class="grade-date">17. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-1">1</span>
+                </li>
+                <li class="grade-item">
+                    <div class="grade-info">
+                        <span class="grade-title">Laboratorní deník</span>
+                        <span class="grade-date">14. 05. 2026</span>
+                    </div>
+                    <span class="grade-value grade-2">2</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+.page-grades {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.grades-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.grades-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a3a52;
+    margin-bottom: 0.5rem;
+}
+
+.grades-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+}
+
+.grades-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: linear-gradient(135deg, #0066cc 0%, #004da6 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.summary-icon {
+    font-size: 2rem;
+}
+
+.summary-info h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.summary-value {
+    margin: 0.25rem 0 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.grades-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.subject-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 5px solid #0066cc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.subject-card h2 {
+    color: #1a3a52;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.average-badge {
+    background: #0066cc;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.375rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.average-badge.excellent {
+    background: #10b981;
+}
+
+.grades-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.grade-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.grade-item:last-child {
+    border-bottom: none;
+}
+
+.grade-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.grade-title {
+    color: #1f2937;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.grade-date {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+.grade-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: white;
+    font-size: 1rem;
+}
+
+.grade-1 {
+    background: #10b981;
+}
+
+.grade-2 {
+    background: #f59e0b;
+}
+
+.grade-3 {
+    background: #ef4444;
+}
+
+@media (max-width: 768px) {
+    .grades-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .grades-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-card {
+        padding: 1rem;
+    }
+
+    .grades-container {
+        grid-template-columns: 1fr;
+    }
+}
         </ul>
     </div>
 

@@ -2,22 +2,190 @@
 @using Port_SPS.Pages
 @model AnnouncementsModel
 @{
-    ViewData["Title"] = "Oznámení";
+    ViewData["Title"] = "Oznámení - SPS Trutnov";
 }
 
-<h2>📢 Oznámení a novinky</h2>
-<div class="announcements-list">
-    <article class="announcement important">
-        <div class="announcement-header">
-            <h3>⚠️ Oznámení ze školy</h3>
-            <span class="announcement-date">XX. XX. 2026</span>
-        </div>
-        <p>Obsah oznámení bude doplněn později.</p>
-    </article>
+<div class="page-announcements">
+    <div class="announcements-header">
+        <h1>📢 Oznámení a novinky</h1>
+        <p class="announcements-subtitle">Důležité zprávy ze školy a aktuální informace</p>
+    </div>
 
-    <article class="announcement">
-        <div class="announcement-header">
-            <h3>📢 Novinky</h3>
+    <div class="announcements-list">
+        <article class="announcement important">
+            <div class="announcement-header">
+                <h3>⚠️ Změna - 30. května</h3>
+                <span class="announcement-date">26. 05. 2026</span>
+            </div>
+            <p>Upozorňujeme na změnu dveří od toalet. Změna bude provedena v pátek 30. května. V průběhu údržby nebudou toalety přístupné.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>📢 Projektový den - Červen 2026</h3>
+                <span class="announcement-date">25. 05. 2026</span>
+            </div>
+            <p>Projektový den se bude konat ve středu 30. května. Témata projektů budou krátce zveřejněna. Všichni studenti jsou povinni se zúčastnit. Projekty budou prezentovány v posluchárně školy.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>🔧 Údržba vzdělávacího portálu</h3>
+                <span class="announcement-date">24. 05. 2026</span>
+            </div>
+            <p>V sobotu 31. května bude probíhat pravidelná údržba portálu. V tomto čase nebude možné používat portál. Předpokládaná doba údržby je 2-4 hodiny. Děkujeme za pochopení.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>🎉 Školní výlet - červen</h3>
+                <span class="announcement-date">23. 05. 2026</span>
+            </div>
+            <p>Školní výlet se bude konat v pátek 2. června. Bližší informace a seznam účastníků budou zveřejněny v příslušné sekci. Prosím, aby všichni zájemci se přihlásili do pátku 28. května.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>📚 Nové učební materiály</h3>
+                <span class="announcement-date">22. 05. 2026</span>
+            </div>
+            <p>V sekci Materiály naleznete nové učební texty a příklady ke zbývajícím tématům prvního pololetí. Materiály jsou přístupné všem studentům. Doporučujeme si je stáhnout a proškolit se s nimi.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>✅ Závěrečné zkoušky - harmonogram</h3>
+                <span class="announcement-date">21. 05. 2026</span>
+            </div>
+            <p>Harmonogram závěrečných zkoušek je již připraven. Příslušné třídy byly seznámeny s termíny. Zkoušky budou probíhat od 5. června do 15. června. Prosím, abyste se řádně připravili.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>🏆 Soutěž v programování</h3>
+                <span class="announcement-date">20. 05. 2026</span>
+            </div>
+            <p>Zájemcům o účast v školní soutěži v programování se prosí, aby se zaregistrovali do 27. května. Soutěž se bude konat 10. června. Více informací získáte u Ing. Jana Dvořáka.</p>
+        </article>
+
+        <article class="announcement">
+            <div class="announcement-header">
+                <h3>📖 Knihovna - prodloužení hodin</h3>
+                <span class="announcement-date">19. 05. 2026</span>
+            </div>
+            <p>Od月 1. června budou prodlouženy otevírací doby knihovny. Knihovna bude otevřena až do 17:00 místo dosavadních 16:30. Studenti tak budou mít více času na přípravy.</p>
+        </article>
+    </div>
+</div>
+
+<style>
+.page-announcements {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.announcements-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.announcements-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a3a52;
+    margin-bottom: 0.5rem;
+}
+
+.announcements-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+}
+
+.announcements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.announcement {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-left: 5px solid #0066cc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.announcement:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.announcement.important {
+    border-left-color: #ef4444;
+    background: linear-gradient(135deg, #fee2e2 0%, #fff 100%);
+}
+
+.announcement.important .announcement-header h3 {
+    color: #7f1d1d;
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.announcement-header h3 {
+    color: #1a3a52;
+    font-size: 1.25rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.announcement-date {
+    background: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+.announcement p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .announcements-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .announcement-header {
+        flex-direction: column;
+    }
+
+    .announcement {
+        padding: 1rem;
+    }
+}
             <span class="announcement-date">XX. XX. 2026</span>
         </div>
         <p>Nové informace a aktuality budou zveřejněny v příslušné sekci.</p>

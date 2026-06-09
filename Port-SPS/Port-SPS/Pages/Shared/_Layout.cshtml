@@ -32,22 +32,30 @@
     </header>
 
     <!-- Navigation -->
-    @if (User.Identity?.IsAuthenticated ?? false)
-    {
-        <nav class="nav-menu">
-            <div class="nav-container">
+    <nav class="nav-menu">
+        <div class="nav-container">
+            <!-- Veřejné stránky -->
+            <a asp-page="/Index" class="nav-link">🏠 Úvod</a>
+            <a asp-page="/About" class="nav-link">ℹ️ O škole</a>
+            <a asp-page="/TeachersPublic" class="nav-link">👨‍🏫 Učitelé</a>
+            <a asp-page="/Contact" class="nav-link">📞 Kontakty</a>
+
+            <!-- Přihlášené uživatele -->
+            @if (User.Identity?.IsAuthenticated ?? false)
+            {
+                <div class="nav-divider"></div>
                 <a asp-page="/Dashboard" class="nav-link">📊 Přehled</a>
                 <a asp-page="/Schedule" class="nav-link">🗓️ Rozvrh</a>
                 <a asp-page="/Grades" class="nav-link">📈 Známky</a>
                 <a asp-page="/Messages" class="nav-link">💬 Zprávy</a>
                 <a asp-page="/Classes" class="nav-link">👥 Třídy</a>
                 <a asp-page="/Announcements" class="nav-link">📢 Oznámení</a>
-                <a asp-page="/Teachers" class="nav-link">👨‍🏫 Učitelé</a>
+                <a asp-page="/Teachers" class="nav-link">👨‍🏫 Učitelé (interno)</a>
                 <a asp-page="/Materials" class="nav-link">📚 Materiály</a>
                 <a asp-page="/Profile/Index" class="nav-link">👤 Profil</a>
-            </div>
-        </nav>
-    }
+            }
+        </div>
+    </nav>
 
     <div class="container">
         <main role="main">

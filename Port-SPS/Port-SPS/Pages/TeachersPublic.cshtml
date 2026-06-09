@@ -1,0 +1,232 @@
+@page
+@using Port_SPS.Pages
+@model TeachersPublicModel
+@{
+    ViewData["Title"] = "Učitelé - SPS Trutnov";
+}
+
+<div class="page-container">
+    <h1 class="page-title">👨‍🏫 Naši učitelé</h1>
+
+    <section class="content-section">
+        <p class="intro-text">
+            Seznamte se s našim kvalifikovaným pedagogickým sborem. Naši učitelé jsou odborníci se
+            značnými zkušenostmi v praxi a vzdělání.
+        </p>
+    </section>
+
+    <section class="content-section">
+        <h2>Oddělení a vedoucí</h2>
+        <div class="teachers-grid">
+            <div class="teacher-card">
+                <div class="teacher-icon">👨‍💼</div>
+                <h3>Oddělení IT</h3>
+                <p class="teacher-role">Vedoucí: Ing. Jan Dvořák</p>
+                <p class="teacher-desc">Specialista na síťové technologie a bezpečnost</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">👨‍🔧</div>
+                <h3>Oddělení Strojnictví</h3>
+                <p class="teacher-role">Vedoucí: Ing. Petr Svoboda</p>
+                <p class="teacher-desc">Dlouholetá praxe v automechanice a vývoji</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">👨‍🏗️</div>
+                <h3>Oddělení Stavebnictví</h3>
+                <p class="teacher-role">Vedoucí: Ing. Jaroslav Novotný</p>
+                <p class="teacher-desc">Expertonon stavebních technologií a projektování</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">⚡</div>
+                <h3>Oddělení Elektrotechniky</h3>
+                <p class="teacher-role">Vedoucí: Ing. Viktor Kučera</p>
+                <p class="teacher-desc">Odborník na energetiku a automatizaci</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">👔</div>
+                <h3>Oddělení Obchodu</h3>
+                <p class="teacher-role">Vedoucí: Ing. Jana Bartošová</p>
+                <p class="teacher-desc">Specialistka na management a obchodní komunikaci</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">🎨</div>
+                <h3>Oddělení Grafiky</h3>
+                <p class="teacher-role">Vedoucí: MgA. Roman Čech</p>
+                <p class="teacher-desc">Tvůrce a odborník na digitální design</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>Kvalifikace našich pedagogů</h2>
+        <ul class="qualification-list">
+            <li>✓ Vysokoškolské vzdělání v příslušných oborech</li>
+            <li>✓ Průběžné školení a vzdělávání</li>
+            <li>✓ Certifikace v moderních technologiích</li>
+            <li>✓ Bohaté praktické zkušenosti z průmyslu</li>
+            <li>✓ Zaměření na individuální přístup k studentům</li>
+            <li>✓ Angličtina a další cizí jazyky</li>
+        </ul>
+    </section>
+
+    <section class="content-section">
+        <h2>Jejich role ve výuce</h2>
+        <div class="role-boxes">
+            <div class="role-box">
+                <h3>🎯 Teoretická výuka</h3>
+                <p>Poskytujeme solidní teoretické základy v každém oboru</p>
+            </div>
+            <div class="role-box">
+                <h3>🔬 Praktické laboratorní cvičení</h3>
+                <p>Studenti pracují s reálným vybavením a moderními technologiemi</p>
+            </div>
+            <div class="role-box">
+                <h3>💼 Stážování a praxe</h3>
+                <p>Učitelé usnadňují kontakty s podniky pro praktické stážování</p>
+            </div>
+            <div class="role-box">
+                <h3>📚 Mentoring</h3>
+                <p>Osobní podpora a vedení studentů při jejich rozvoji</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>Kontakt na pedagogy</h2>
+        <p>
+            Pro konkrétní dotazy ohledně jednotlivých oborů nebo profesní orientaci se obracejte 
+            prosím na naši centrální linku nebo navštivte naši školu osobně.
+        </p>
+        <a asp-page="/Contact" class="btn-primary">📞 Kontaktní informace</a>
+    </section>
+</div>
+
+<style>
+.page-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #1a3a52;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
+.content-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #0066cc;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.teacher-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.teacher-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.teacher-card h3 {
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-role {
+    font-weight: bold;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.teacher-desc {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0.5rem 0;
+}
+
+.qualification-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.qualification-list li {
+    padding: 0.75rem 0;
+    font-size: 1.05rem;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.qualification-list li:last-child {
+    border-bottom: none;
+}
+
+.role-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.role-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.role-box h3 {
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+}
+
+.role-box p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: #0066cc;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #0052a3;
+}
+</style>
