@@ -8,105 +8,105 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
+    <header>
+        <div>
+            <div>
                 <img src="elogo.png" alt="Logo" title="SPS Trutnov">
                 <div>
                     <h1>📚 SPS Trutnov</h1>
                     <p>Školní portál</p>
                 </div>
             </div>
-            <div class="user-info">
-                <span class="user-greeting" id="userGreeting"></span>
-                <button class="logout-btn" onclick="handleLogout()">Odhlásit se</button>
+            <div>
+                <span id="userGreeting"></span>
+                <button onclick="handleLogout()">Odhlásit se</button>
             </div>
         </div>
     </header>
 
     <!-- Navigation -->
-    <nav class="nav-menu">
-        <div class="nav-container">
-            <a href="dashboard.html" class="nav-link">Přehled</a>
-            <a href="schedule.html" class="nav-link">Rozvrh</a>
-            <a href="grades.html" class="nav-link active">Známky</a>
-            <a href="messages.html" class="nav-link">Zprávy</a>
-            <a href="classes.html" class="nav-link">Třídy</a>
-            <a href="announcements.html" class="nav-link">Oznámení</a>
-            <a href="teachers.html" class="nav-link">Učitelé</a>
-            <a href="materials.html" class="nav-link">Materiály</a>
-            <a href="toilets.html" class="nav-link">🚻 Toalety</a>
-            <a href="profile.html" class="nav-link">Profil</a>
+    <nav>
+        <div>
+            <a href="dashboard.html">Přehled</a>
+            <a href="schedule.html">Rozvrh</a>
+            <a href="grades.html">Známky</a>
+            <a href="messages.html">Zprávy</a>
+            <a href="classes.html">Třídy</a>
+            <a href="announcements.html">Oznámení</a>
+            <a href="teachers.html">Učitelé</a>
+            <a href="materials.html">Materiály</a>
+            <a href="toilets.html">🚻 Toalety</a>
+            <a href="profile.html">Profil</a>
         </div>
     </nav>
 
-    <div class="container" id="grades-with-logo">
-        <section id="grades" class="section" style="display: block;">
+    <div>
+        <section>
             <h2>Moje známky</h2>
-            <div class="grades-grid">
-                <div class="subject-card">
+            <div>
+                <div>
                     <h3>Matematika</h3>
-                    <p class="subject-average">Průměr: <strong>8.2</strong></p>
-                    <ul class="grades-list">
-                        <li><span>Písemka - Kvadratické rovnice</span> <span class="grade-1">1</span></li>
-                        <li><span>Ústní odpověď</span> <span class="grade-1">1</span></li>
-                        <li><span>Domácí úkol - průměr</span> <span class="grade-2">2</span></li>
-                        <li><span>Test - Funkce</span> <span class="grade-1">1</span></li>
+                    <p>Průměr: <strong>8.2</strong></p>
+                    <ul>
+                        <li><span>Písemka - Kvadratické rovnice</span> <span>1</span></li>
+                        <li><span>Ústní odpověď</span> <span>1</span></li>
+                        <li><span>Domácí úkol - průměr</span> <span>2</span></li>
+                        <li><span>Test - Funkce</span> <span>1</span></li>
                     </ul>
                 </div>
 
-                <div class="subject-card">
+                <div>
                     <h3>Čeština</h3>
-                    <p class="subject-average">Průměr: <strong>8.7</strong></p>
-                    <ul class="grades-list">
-                        <li><span>Esej - Klasická literatura</span> <span class="grade-1">1</span></li>
-                        <li><span>Diktat</span> <span class="grade-2">2</span></li>
-                        <li><span>Čtenářský deník</span> <span class="grade-1">1</span></li>
-                        <li><span>Ústní odpověď</span> <span class="grade-2">2</span></li>
+                    <p>Průměr: <strong>8.7</strong></p>
+                    <ul>
+                        <li><span>Esej - Klasická literatura</span> <span>1</span></li>
+                        <li><span>Diktat</span> <span>2</span></li>
+                        <li><span>Čtenářský deník</span> <span>1</span></li>
+                        <li><span>Ústní odpověď</span> <span>2</span></li>
                     </ul>
                 </div>
 
-                <div class="subject-card">
+                <div>
                     <h3>Anglický jazyk</h3>
-                    <p class="subject-average">Průměr: <strong>9.0</strong></p>
-                    <ul class="grades-list">
-                        <li><span>Written test</span> <span class="grade-1">1</span></li>
-                        <li><span>Listening comprehension</span> <span class="grade-1">1</span></li>
-                        <li><span>Speaking practice</span> <span class="grade-1">1</span></li>
-                        <li><span>Prezentace</span> <span class="grade-1">1</span></li>
+                    <p>Průměr: <strong>9.0</strong></p>
+                    <ul>
+                        <li><span>Written test</span> <span>1</span></li>
+                        <li><span>Listening comprehension</span> <span>1</span></li>
+                        <li><span>Speaking practice</span> <span>1</span></li>
+                        <li><span>Prezentace</span> <span>1</span></li>
                     </ul>
                 </div>
 
-                <div class="subject-card">
+                <div>
                     <h3>Fyzika</h3>
-                    <p class="subject-average">Průměr: <strong>8.3</strong></p>
-                    <ul class="grades-list">
-                        <li><span>Praktické cvičení - optika</span> <span class="grade-1">1</span></li>
-                        <li><span>Test - Mechanika</span> <span class="grade-2">2</span></li>
-                        <li><span>Písemky - průměr</span> <span class="grade-2">2</span></li>
-                        <li><span>Projekt - fyzikální experiment</span> <span class="grade-1">1</span></li>
+                    <p>Průměr: <strong>8.3</strong></p>
+                    <ul>
+                        <li><span>Praktické cvičení - optika</span> <span>1</span></li>
+                        <li><span>Test - Mechanika</span> <span>2</span></li>
+                        <li><span>Písemky - průměr</span> <span>2</span></li>
+                        <li><span>Projekt - fyzikální experiment</span> <span>1</span></li>
                     </ul>
                 </div>
 
-                <div class="subject-card">
+                <div>
                     <h3>Informatika</h3>
-                    <p class="subject-average">Průměr: <strong>9.2</strong></p>
-                    <ul class="grades-list">
-                        <li><span>Programování - HTML/CSS projekt</span> <span class="grade-1">1</span></li>
-                        <li><span>Algoritmy - test</span> <span class="grade-1">1</span></li>
-                        <li><span>Databáze - praktická práce</span> <span class="grade-1">1</span></li>
-                        <li><span>Bezpečnost IT - esej</span> <span class="grade-1">1</span></li>
+                    <p>Průměr: <strong>9.2</strong></p>
+                    <ul>
+                        <li><span>Programování - HTML/CSS projekt</span> <span>1</span></li>
+                        <li><span>Algoritmy - test</span> <span>1</span></li>
+                        <li><span>Databáze - praktická práce</span> <span>1</span></li>
+                        <li><span>Bezpečnost IT - esej</span> <span>1</span></li>
                     </ul>
                 </div>
 
-                <div class="subject-card">
+                <div>
                     <h3>Tělesná výchova</h3>
-                    <p class="subject-average">Průměr: <strong>9.0</strong></p>
-                    <ul class="grades-list">
-                        <li><span>Atletika</span> <span class="grade-1">1</span></li>
-                        <li><span>Basket</span> <span class="grade-1">1</span></li>
-                        <li><span>Gymnastika</span> <span class="grade-1">1</span></li>
-                        <li><span>Součinnost v týmu</span> <span class="grade-1">1</span></li>
+                    <p>Průměr: <strong>9.0</strong></p>
+                    <ul>
+                        <li><span>Atletika</span> <span>1</span></li>
+                        <li><span>Basket</span> <span>1</span></li>
+                        <li><span>Gymnastika</span> <span>1</span></li>
+                        <li><span>Součinnost v týmu</span> <span>1</span></li>
                     </ul>
                 </div>
             </div>
@@ -114,10 +114,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
+    <footer>
+        <div>
             <p>&copy; 2026 Střední průmyslová škola Trutnov. Všechna práva vyhrazena.</p>
-            <div class="footer-links">
+            <div>
                 <a href="#">Ochrana osobních údajů</a> | 
                 <a href="#">Podmínky používání</a> | 
                 <a href="#">Kontakt</a>
