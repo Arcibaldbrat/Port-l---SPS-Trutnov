@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Úkoly - SPS Trutnov</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header"><div class="header-content"><div class="logo"><img src="elogo.png" alt="Logo"><div><h1>📚 SPS Trutnov</h1><p>Školní portál</p></div></div><div class="user-info"><span class="user-greeting" id="userGreeting"></span><button class="logout-btn" onclick="handleLogout()">Odhlásit se</button></div></div></header>
+    <nav class="nav-menu"><div class="nav-container"><a href="dashboard.html" class="nav-link">Přehled</a><a href="schedule.html" class="nav-link">Rozvrh</a><a href="grades.html" class="nav-link">Známky</a><a href="messages.html" class="nav-link">Zprávy</a><a href="materials.html" class="nav-link">Materiály</a><a href="homework.html" class="nav-link active">Úkoly</a></div></nav>
+    <div class="container">
+        <section class="section" style="display:block">
+            <h2>Domácí úkoly</h2>
+            <div class="portal-grid">
+                <div class="portal-card"><h3>Aktivní úkoly</h3><ul class="portal-list"><li><span>Matematika: příklady 1-15, strana 45</span><span class="status-pill status-warn">Do zítřka</span></li><li><span>Čeština: rozbor básně</span><span class="status-pill status-ok">3 dny</span></li><li><span>Informatika: dokončit HTML stránku</span><span class="status-pill status-danger">Dnes</span></li></ul></div>
+                <div class="portal-card"><h3>Odevzdání</h3><form class="portal-form"><select><option>Vyber předmět</option><option>Matematika</option><option>Informatika</option></select><input type="file"><textarea placeholder="Poznámka k odevzdání"></textarea><button type="button" class="btn-primary">Uložit demo odevzdání</button></form></div>
+                <div class="portal-card"><h3>Splněno</h3><ul class="portal-list"><li><span>Angličtina: Present Perfect</span><span class="status-pill status-ok">Odevzdáno</span></li><li><span>Fyzika: optika</span><span class="status-pill status-ok">Zkontrolováno</span></li></ul></div>
+            </div>
+        </section>
+    </div>
+    <script src="portal-auth.js"></script>
+</body>
+</html>

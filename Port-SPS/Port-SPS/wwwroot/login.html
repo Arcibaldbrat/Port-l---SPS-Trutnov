@@ -9,21 +9,21 @@
 <body>
     <div class="login-container">
         <div class="login-card">
-            <img src="elogo.png" alt="Logo" title="SPS Trutnov" style="width: 80px; height: 80px; margin-bottom: 1rem; animation: spin-aggressive 1s linear infinite;">
-            <h1>📚 SPS Trutnov</h1>
-            <p class="subtitle">Školní portál - Přihlášení</p>
+            <img src="elogo.png" alt="Logo" title="SPS Trutnov" style="width: 80px; height: 80px; margin-bottom: 1rem;">
+            <h1>SPS Trutnov</h1>
+            <p class="subtitle">Školní portál - přihlášení</p>
 
             <div class="error-message" id="errorMessage"></div>
 
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username">Uživatelské jméno</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="username">Uživatelské jméno nebo email</label>
+                    <input type="text" id="username" name="username" autocomplete="username" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Heslo</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
                 </div>
 
                 <div class="remember-forgot">
@@ -38,39 +38,62 @@
             </form>
 
             <div class="login-footer">
-                <p>&copy; 2026 SPS Trutnov. Všechna práva vyhrazena.</p>
+                <p>Demo účty:</p>
+                <p><strong>student</strong> / Student123!</p>
+                <p><strong>ucitel</strong> / Teacher123!</p>
+                <p><strong>admin</strong> / Admin123!</p>
             </div>
         </div>
     </div>
 
+    <script src="portal-auth.js"></script>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const rememberMe = document.getElementById('rememberMe').checked;
             const errorMessage = document.getElementById('errorMessage');
 
-            // Simple validation - in production, would send to server
+            errorMessage.style.display = 'none';
+
             if (username.trim() === '' || password.trim() === '') {
                 errorMessage.textContent = 'Prosím, vyplňte všechna pole.';
                 errorMessage.style.display = 'block';
                 return;
             }
 
-            // Store user info (in production, would use secure session)
-            localStorage.setItem('user', username);
-            if (rememberMe) {
-                localStorage.setItem('rememberMe', 'true');
-            }
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({ username, password, rememberMe })
+                });
 
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
+                if (!response.ok) {
+                    errorMessage.textContent = 'Neplatné uživatelské jméno nebo heslo.';
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+
+                const user = await response.json();
+                window.portalAuth.storeUser(user);
+                if (rememberMe) {
+                    localStorage.setItem('rememberMe', 'true');
+                }
+
+                window.location.href = 'dashboard.html';
+            } catch {
+                errorMessage.textContent = 'Nepodařilo se připojit k serveru.';
+                errorMessage.style.display = 'block';
+            }
         });
 
-        // Check if user is already logged in
-        if (localStorage.getItem('user')) {
+        if (localStorage.getItem('portalUser')) {
             window.location.href = 'dashboard.html';
         }
     </script>

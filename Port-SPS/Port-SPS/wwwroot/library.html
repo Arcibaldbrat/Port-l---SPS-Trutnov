@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knihovna - SPS Trutnov</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <header class="header"><div class="header-content"><div class="logo"><img src="elogo.png" alt="Logo"><div><h1>📚 SPS Trutnov</h1><p>Školní portál</p></div></div><div class="user-info"><span class="user-greeting" id="userGreeting"></span><button class="logout-btn" onclick="handleLogout()">Odhlásit se</button></div></div></header>
+    <nav class="nav-menu"><div class="nav-container"><a href="dashboard.html" class="nav-link">Přehled</a><a href="materials.html" class="nav-link">Materiály</a><a href="library.html" class="nav-link active">Knihovna</a></div></nav>
+    <div class="container"><section class="section" style="display:block"><h2>Školní knihovna</h2><div class="portal-grid"><div class="portal-card"><h3>Katalog</h3><ul class="portal-list"><li><span>Algoritmy a datové struktury</span><button class="btn-primary">Rezervovat</button></li><li><span>Elektrotechnika I.</span><button class="btn-primary">Rezervovat</button></li><li><span>Česká literatura 20. století</span><button class="btn-secondary">Půjčeno</button></li></ul></div><div class="portal-card"><h3>Moje výpůjčky</h3><ul class="portal-list"><li><span>Python pro začátečníky</span><span class="status-pill status-warn">Vrátit 21. 6.</span></li></ul></div></div></section></div>
+    <script src="portal-auth.js"></script>
+</body>
+</html>

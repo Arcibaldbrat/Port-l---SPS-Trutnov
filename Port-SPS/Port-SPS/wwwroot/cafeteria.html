@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Jídelna - SPS Trutnov</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <header class="header"><div class="header-content"><div class="logo"><img src="elogo.png" alt="Logo"><div><h1>📚 SPS Trutnov</h1><p>Školní portál</p></div></div><div class="user-info"><span class="user-greeting" id="userGreeting"></span><button class="logout-btn" onclick="handleLogout()">Odhlásit se</button></div></div></header>
+    <nav class="nav-menu"><div class="nav-container"><a href="dashboard.html" class="nav-link">Přehled</a><a href="cafeteria.html" class="nav-link active">Jídelna</a></div></nav>
+    <div class="container"><section class="section" style="display:block"><h2>Jídelníček</h2><div class="portal-grid"><div class="portal-card"><h3>Dnes</h3><ul class="portal-list"><li><span>Polévka: zeleninová</span><span class="status-pill status-ok">Alergen 9</span></li><li><span>Menu 1: kuřecí řízek, brambory</span><button class="btn-primary">Objednat</button></li><li><span>Menu 2: těstoviny se sýrem</span><button class="btn-secondary">Objednat</button></li></ul></div><div class="portal-card"><h3>Stav účtu</h3><p><strong>420 Kč</strong></p><p class="small-text">Poslední platba: 10. 6. 2026</p></div><div class="portal-card"><h3>Objednávky</h3><ul class="portal-list"><li><span>Zítra: Menu 1</span><span class="status-pill status-ok">Objednáno</span></li></ul></div></div></section></div>
+    <script src="portal-auth.js"></script>
+</body>
+</html>

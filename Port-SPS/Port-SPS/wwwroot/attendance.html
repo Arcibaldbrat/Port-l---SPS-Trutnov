@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Docházka - SPS Trutnov</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <header class="header"><div class="header-content"><div class="logo"><img src="elogo.png" alt="Logo"><div><h1>📚 SPS Trutnov</h1><p>Školní portál</p></div></div><div class="user-info"><span class="user-greeting" id="userGreeting"></span><button class="logout-btn" onclick="handleLogout()">Odhlásit se</button></div></div></header>
+    <nav class="nav-menu"><div class="nav-container"><a href="dashboard.html" class="nav-link">Přehled</a><a href="schedule.html" class="nav-link">Rozvrh</a><a href="attendance.html" class="nav-link active">Docházka</a></div></nav>
+    <div class="container"><section class="section" style="display:block"><h2>Docházka</h2><div class="portal-grid"><div class="portal-card"><h3>Přehled pololetí</h3><div class="attendance-bar"><div class="attendance-fill" style="width:96%">96 %</div></div><p>Přítomnost: 96 hodin | Absence: 4 hodiny | Pozdní příchody: 1</p></div><div class="portal-card"><h3>Omluvenky</h3><ul class="portal-list"><li><span>12. 6. 2026 - lékař</span><span class="status-pill status-ok">Omluveno</span></li><li><span>17. 6. 2026 - rodinné důvody</span><span class="status-pill status-warn">Čeká</span></li></ul></div><div class="portal-card"><h3>Nová omluvenka</h3><form class="portal-form"><input type="date"><textarea placeholder="Důvod absence"></textarea><button type="button" class="btn-primary">Odeslat omluvenku</button></form></div></div></section></div>
+    <script src="portal-auth.js"></script>
+</body>
+</html>

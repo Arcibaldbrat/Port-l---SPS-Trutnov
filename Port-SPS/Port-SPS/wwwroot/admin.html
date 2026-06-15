@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin - SPS Trutnov</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <header class="header"><div class="header-content"><div class="logo"><img src="elogo.png" alt="Logo"><div><h1>📚 SPS Trutnov</h1><p>Školní portál</p></div></div><div class="user-info"><span class="user-greeting" id="userGreeting"></span><button class="logout-btn" onclick="handleLogout()">Odhlásit se</button></div></div></header>
+    <nav class="nav-menu"><div class="nav-container"><a href="dashboard.html" class="nav-link">Přehled</a><a href="admin.html" class="nav-link active">Admin</a></div></nav>
+    <div class="container"><section class="section" style="display:block"><h2>Administrace</h2><div class="portal-grid"><div class="portal-card"><h3>Uživatelé</h3><ul class="portal-list"><li><span>student@sps.local</span><span class="status-pill status-ok">Žák</span></li><li><span>ucitel@sps.local</span><span class="status-pill status-warn">Učitel</span></li><li><span>admin@sps.local</span><span class="status-pill status-danger">Admin</span></li></ul></div><div class="portal-card"><h3>Nový uživatel</h3><form class="portal-form"><input placeholder="Jméno"><input placeholder="Email"><select><option>Žák</option><option>Učitel</option><option>Admin</option></select><button type="button" class="btn-primary">Vytvořit uživatele</button></form></div><div class="portal-card"><h3>Správa portálu</h3><button class="btn-secondary" type="button">Export dat</button> <button class="btn-secondary" type="button">Nové oznámení</button></div></div></section></div>
+    <script src="portal-auth.js"></script>
+</body>
+</html>

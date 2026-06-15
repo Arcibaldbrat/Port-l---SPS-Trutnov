@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kalendář - SPS Trutnov</title><link rel="stylesheet" href="style.css"></head>
+<body>
+    <header class="header"><div class="header-content"><div class="logo"><img src="elogo.png" alt="Logo"><div><h1>📚 SPS Trutnov</h1><p>Školní portál</p></div></div><div class="user-info"><span class="user-greeting" id="userGreeting"></span><button class="logout-btn" onclick="handleLogout()">Odhlásit se</button></div></div></header>
+    <nav class="nav-menu"><div class="nav-container"><a href="dashboard.html" class="nav-link">Přehled</a><a href="announcements.html" class="nav-link">Oznámení</a><a href="calendar.html" class="nav-link active">Kalendář</a></div></nav>
+    <div class="container"><section class="section" style="display:block"><h2>Kalendář školy</h2><div class="portal-grid"><div class="portal-card"><h3>Nadcházející akce</h3><ul class="portal-list calendar-list"><li><span class="date-box">18. 6.</span><span><strong>Projektový den</strong><br>Prezentace týmových prací</span></li><li><span class="date-box">24. 6.</span><span><strong>Třídní schůzky</strong><br>Od 16:00 v kmenových učebnách</span></li><li><span class="date-box">28. 6.</span><span><strong>Sportovní den</strong><br>Školní hřiště a tělocvična</span></li></ul></div><div class="portal-card"><h3>Testy a zkoušení</h3><ul class="portal-list"><li><span>Matematika - funkce</span><span class="status-pill status-warn">20. 6.</span></li><li><span>Fyzika - elektřina</span><span class="status-pill status-warn">22. 6.</span></li></ul></div></div></section></div>
+    <script src="portal-auth.js"></script>
+</body>
+</html>
