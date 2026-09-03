@@ -1,0 +1,326 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Domů - SPS Trutnov";
+}
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">📚 Portál SPS Trutnov</h1>
+            <p class="hero-subtitle">Střední průmyslová škola Trutnov</p>
+            <p class="hero-description">Moderní vzdělávací portál pro studenty, učitele a veřejnost</p>
+
+            @if (!(User.Identity?.IsAuthenticated ?? false))
+            {
+                <div class="hero-buttons">
+                    <a asp-page="/Auth/Login" class="btn-hero btn-hero-primary">🔐 Přihlásit se</a>
+                    <a asp-page="/Auth/Register" class="btn-hero btn-hero-secondary">✏️ Zaregistrovat se</a>
+                </div>
+            }
+            else
+            {
+                <div class="hero-buttons">
+                    <a asp-page="/Dashboard" class="btn-hero btn-hero-primary">📊 Na dashboard</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- INFO SECTION -->
+<section class="info-section">
+    <div class="container">
+        <h2 class="section-title">ℹ️ O naší škole</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">🎓</div>
+                <h3>Kvalitní vzdělání</h3>
+                <p>Poskytujeme moderní vzdělání se zaměřením na praktické dovednosti a připravenost na trh práce.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🔧</div>
+                <h3>Praktická výuka</h3>
+                <p>Naši studenti získávají cenné zkušenosti v laboratorích a dílnách vybavených moderní technikou.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">👨‍🏫</div>
+                <h3>Zkušení pedagogové</h3>
+                <p>Náš pedagogický sbor se skládá z odborníků se značnými pracovními zkušenostmi v praxi.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🏆</div>
+                <h3>Úspěchy studentů</h3>
+                <p>Naši studenti dosahují vynikajících výsledků v soutěžích a přijímacích zkouškách.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="section-title">🌟 Co nám dělá speciální</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <h3>6 Oborů</h3>
+                <p>Informatika, Strojnictví, Stavebnictví, Elektrotechnika, Obchod, Grafika</p>
+            </div>
+            <div class="feature">
+                <h3>500+ Studentů</h3>
+                <p>Živá komunita studentů různých věkových skupin a zaměření</p>
+            </div>
+            <div class="feature">
+                <h3>30 Let Tradice</h3>
+                <p>Dlouhá historie úspěšné výuky a vedení studentů k jejich cílům</p>
+            </div>
+            <div class="feature">
+                <h3>Moderní Vybavení</h3>
+                <p>Laboratoře, počítačové pracovny a dílny s nejnovější technikou</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Chcete se o nás dozvědět více?</h2>
+        <p>Navštivte naše stránky nebo nás kontaktujte</p>
+        <div class="cta-buttons">
+            <a href="/About" class="cta-btn primary">O škole</a>
+            <a href="/TeachersPublic" class="cta-btn secondary">Naši učitelé</a>
+            <a href="/Contact" class="cta-btn secondary">Kontaktujte nás</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.95;
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid;
+}
+
+.btn-hero-primary {
+    background: #ff6b35;
+    color: white;
+    border-color: #ff6b35;
+}
+
+.btn-hero-primary:hover {
+    background: transparent;
+    color: #ff6b35;
+    transform: translateY(-3px);
+}
+
+.btn-hero-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1a3a52;
+    margin-bottom: 3rem;
+}
+
+.info-section {
+    padding: 4rem 0;
+    background: white;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.info-card {
+    text-align: center;
+    padding: 2rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+}
+
+.info-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.features-section {
+    padding: 4rem 0;
+    background: #f3f4f6;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feature h3 {
+    color: #1a3a52;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.cta-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #0066cc 0%, #004da6 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cta-btn.primary {
+    background: white;
+    color: #0066cc;
+}
+
+.cta-btn.primary:hover {
+    background: #f0f0f0;
+    transform: translateY(-3px);
+}
+
+.cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-buttons,
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .btn-hero,
+    .cta-btn {
+        width: 100%;
+    }
+}
+</style>

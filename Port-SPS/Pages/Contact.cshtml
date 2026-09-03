@@ -1,0 +1,223 @@
+@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Kontakty - SPS Trutnov";
+}
+
+<div class="page-container">
+    <h1>📞 Kontakty</h1>
+
+    <section class="content-section">
+        <p class="intro">Kontaktujte nás jakýmkoliv ze způsobů uvedených níže. Rádi vám zodpovíme veškeré vaše dotazy ohledně naší školy.</p>
+    </section>
+
+    <div class="contact-grid">
+        <div class="contact-box">
+            <h3>📍 Adresa</h3>
+            <p><strong>SPS Trutnov</strong></p>
+            <p>Benešova 1234</p>
+            <p>541 01 Trutnov</p>
+        </div>
+
+        <div class="contact-box">
+            <h3>📱 Telefon</h3>
+            <p><strong>Hlavní linka:</strong></p>
+            <p><a href="tel:+420499801234">+420 499 801 234</a></p>
+            <p><strong>Sekretariát:</strong></p>
+            <p><a href="tel:+420499801235">+420 499 801 235</a></p>
+        </div>
+
+        <div class="contact-box">
+            <h3>✉️ E-mail</h3>
+            <p><a href="mailto:info@spstrutnov.cz">info@spstrutnov.cz</a></p>
+            <p><a href="mailto:reditel@spstrutnov.cz">reditel@spstrutnov.cz</a></p>
+        </div>
+
+        <div class="contact-box">
+            <h3>🕐 Otevírací doba</h3>
+            <p><strong>Po-Pá:</strong> 7:00 - 16:00</p>
+            <p><strong>So-Ne:</strong> Zavřeno</p>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <h2>Napište nám zprávu</h2>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert-success">✓ @TempData["SuccessMessage"]</div>
+        }
+
+        <form method="post" class="contact-form">
+            <div class="form-group">
+                <label for="name">Jméno *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Předmět *</label>
+                <select id="subject" name="subject" required>
+                    <option value="">-- Zvolte předmět --</option>
+                    <option value="admission">Přijetí do školy</option>
+                    <option value="curriculum">Učební plán</option>
+                    <option value="facilities">Vybavení</option>
+                    <option value="events">Akce</option>
+                    <option value="other">Jiné</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Zpráva *</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Odeslat zprávu</button>
+        </form>
+    </section>
+</div>
+
+<style>
+.page-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.page-container h1 {
+    font-size: 2.5rem;
+    color: #1a3a52;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.content-section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    border-left: 5px solid #0066cc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #0066cc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contact-box h3 {
+    color: #1a3a52;
+    margin-bottom: 1rem;
+}
+
+.contact-box p {
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.contact-box a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-box a:hover {
+    text-decoration: underline;
+}
+
+.alert-success {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #10b981;
+}
+
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1a3a52;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.btn-submit {
+    background: #0066cc;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: #0052a3;
+}
+
+@media (max-width: 768px) {
+    .page-container h1 {
+        font-size: 1.75rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

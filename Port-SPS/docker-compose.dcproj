@@ -14,5 +14,16 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="Pages\About.cshtml" />
+    <None Include="Pages\About.cshtml.cs" />
+    <None Include="Pages\Contact.cshtml" />
+    <None Include="Pages\Contact.cshtml.cs" />
+    <None Include="Pages\Index.cshtml" />
+    <None Include="Pages\Index.cshtml.cs" />
+    <None Include="Pages\TeachersPublic.cshtml" />
+    <None Include="Pages\TeachersPublic.cshtml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Student\" />
   </ItemGroup>
 </Project>

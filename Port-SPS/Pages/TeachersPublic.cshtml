@@ -1,0 +1,158 @@
+@page
+@model TeachersPublicModel
+@{
+    ViewData["Title"] = "Učitelé - SPS Trutnov";
+}
+
+<div class="page-container">
+    <h1>👨‍🏫 Naši učitelé</h1>
+
+    <section class="content-section">
+        <p class="intro">Seznamte se s našim kvalifikovaným pedagogickým sborem. Naši učitelé jsou odborníci se značnými zkušenostmi v praxi a vzdělání.</p>
+    </section>
+
+    <section class="content-section">
+        <h2>Vedoucí jednotlivých oborů</h2>
+        <div class="teachers-grid">
+            <div class="teacher-card">
+                <div class="teacher-icon">📚</div>
+                <h3>Oddělení IT</h3>
+                <p class="role">Vedoucí: Ing. Jan Dvořák</p>
+                <p class="desc">Specialista na síťové technologie a bezpečnost</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">🔧</div>
+                <h3>Oddělení Strojnictví</h3>
+                <p class="role">Vedoucí: Ing. Petr Svoboda</p>
+                <p class="desc">Dlouholetá praxe v automechanice a vývoji</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">🏗️</div>
+                <h3>Oddělení Stavebnictví</h3>
+                <p class="role">Vedoucí: Ing. Jaroslav Novotný</p>
+                <p class="desc">Expert na stavebních technologií a projektování</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">⚡</div>
+                <h3>Oddělení Elektrotechniky</h3>
+                <p class="role">Vedoucí: Ing. Viktor Kučera</p>
+                <p class="desc">Odborník na energetiku a automatizaci</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">👔</div>
+                <h3>Oddělení Obchodu</h3>
+                <p class="role">Vedoucí: Ing. Jana Bartošová</p>
+                <p class="desc">Specialistka na management a komunikaci</p>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-icon">🎨</div>
+                <h3>Oddělení Grafiky</h3>
+                <p class="role">Vedoucí: MgA. Roman Čech</p>
+                <p class="desc">Tvůrce a odborník na digitální design</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>Kvalifikace našich pedagogů</h2>
+        <ul class="qual-list">
+            <li>✓ Vysokoškolské vzdělání v příslušných oborech</li>
+            <li>✓ Průběžné školení a vzdělávání</li>
+            <li>✓ Certifikace v moderních technologiích</li>
+            <li>✓ Bohaté praktické zkušenosti z průmyslu</li>
+            <li>✓ Zaměření na individuální přístup k studentům</li>
+            <li>✓ Znalost angličtiny a dalších cizích jazyků</li>
+        </ul>
+    </section>
+</div>
+
+<style>
+.page-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.page-container h1 {
+    font-size: 2.5rem;
+    color: #1a3a52;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.content-section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    border-left: 5px solid #0066cc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.teacher-card {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.teacher-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.teacher-card h3 {
+    color: #1a3a52;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-card .role {
+    font-weight: 600;
+    color: #0066cc;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.teacher-card .desc {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.qual-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+}
+
+.qual-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .page-container h1 {
+        font-size: 1.75rem;
+    }
+}
+</style>
