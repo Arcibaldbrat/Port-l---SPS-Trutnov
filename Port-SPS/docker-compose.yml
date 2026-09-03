@@ -1,7 +1,9 @@
 services:
   port-sps:
     image: ${DOCKER_REGISTRY-}portsps
-    build:
+    build:cd Port-SPS
+dotnet runcd Port-SPS
+dotnet run
       context: .
       dockerfile: Port-SPS/Dockerfile
     ports:
